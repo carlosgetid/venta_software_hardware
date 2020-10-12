@@ -25,5 +25,8 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	);
 
 
+
+
+
 Select * from tb_direccion; 
 
