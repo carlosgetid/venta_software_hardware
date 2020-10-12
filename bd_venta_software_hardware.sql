@@ -15,6 +15,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   PRIMARY KEY (`cod_dir`));
 
 
+
 CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Codigo_Departamento` varchar(2) NULL,
 	`Codigo_Provincia` varchar(2) NULL,
@@ -22,4 +23,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Codigo` varchar(6) NULL,
 	`Descripcion` varchar(200) NULL,
 	);
+
+
+Select * from tb_direccion; 
 
