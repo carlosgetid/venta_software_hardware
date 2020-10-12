@@ -14,3 +14,4 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `cod_dist` INT NULL,
   PRIMARY KEY (`cod_dir`));
 
+Select * from tb_direccion; 
