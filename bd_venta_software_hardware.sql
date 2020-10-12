@@ -43,6 +43,26 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Descripcion` varchar(200) NULL,
 	);
 
+CREATE TABLE `bd_venta_software_hardware`.`tb_rol`(
+	`cod_rol` INT NOT NULL AUTO_INCREMENT,
+	`descrip_rol` VARCHAR(30) NULL,
+    PRIMARY KEY (`cod_rol`)
+);
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_trabajador`(
+	`cod_trab` INT NOT NULL AUTO_INCREMENT,
+	`cod_rol` INT NOT NULL,
+	`num_ruc_trab` char(11) null,
+	`ras_soc_trab` varchar(100) null,
+	`nom_trab` varchar(30) not null,
+	`ape_trab` varchar(30) not null,
+    `dni_trab` char(8) not null,
+    `email_trab` varchar(50) not null,
+    `tlf_trab` varchar(15) not null,
+    PRIMARY KEY (`cod_rol`)
+);
+
+
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_horario` (
   `cod_hor` INT NOT NULL,
