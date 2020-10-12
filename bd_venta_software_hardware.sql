@@ -14,6 +14,24 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `cod_dist` INT NULL,
   PRIMARY KEY (`cod_dir`));
 
+ CREATE TABLE `bd_venta_software_hardware`.`tb_rol` (
+  `cod_rol` INT NOT NULL,
+  `descrip_rol` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_rol`));
+
+
+ CREATE TABLE `bd_venta_software_hardware`.`tb_trabajador` (
+  `cod_trab` INT NOT NULL,
+  `cod_rol` INT NULL,
+  `num_ruc` VARCHAR(45) NULL,
+  `raz_soc` VARCHAR(45) NULL,
+  `nom_trab` VARCHAR(45) NULL,
+  `ape_trab` VARCHAR(45) NULL,
+  `dni_trab` VARCHAR(45) NULL,
+  `email_trab` VARCHAR(45) NULL,
+  `tlf_trab` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_trab`),
+  FOREIGN KEY (`cod_rol`) REFERENCES tb_rol(`cod_rol`));
 
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
@@ -23,6 +41,72 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Codigo` varchar(6) NULL,
 	`Descripcion` varchar(200) NULL,
 	);
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_horario` (
+  `cod_hor` INT NOT NULL,
+  `fec_hor` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  PRIMARY KEY (`cod_hor`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_pedido` (
+  `cod_ped` INT NOT NULL,
+  `cod_usu` INT NULL,
+  `cod_hor` INT NULL,
+  `cod_prod` INT NULL,
+  PRIMARY KEY (`cod_ped`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_venta` (
+  `cod_ven` INT NOT NULL,
+  `num_tarj` INT NULL,
+  `fec_ven_tarj` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `cod_seg_tarj` INT NULL,
+  `nom_titu_tarj` VARCHAR(45) NULL,
+  `cod_ped` INT NULL,
+  PRIMARY KEY (`cod_ven`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_factura` (
+  `cod_fac` INT NOT NULL,
+  `fec_fac` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_ven_fac` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `firm_fac` MEDIUMBLOB NULL,
+  `cod_trab` INT NULL,
+  `cod_usu` INT NULL,
+  `cod_ven` INT NULL,
+  PRIMARY KEY (`cod_fac`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_boleta` (
+  `cod_bol` INT NOT NULL,
+  `fec_bol` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `cod_trab` INT NULL,
+  `cod_usu` INT NULL,
+  `cod_ped` INT NULL,
+  `cod_ven` INT NULL,
+  PRIMARY KEY (`cod_bol`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_usuario` (
+  `cod_usu` INT NOT NULL,
+  `nom_usu` VARCHAR(45) NULL,
+  `ape_usu` VARCHAR(45) NULL,
+  `emai_usul` VARCHAR(45) NULL,
+  `tlf_usu` VARCHAR(45) NULL,
+  `fec_nac` VARCHAR(45) NULL,
+  `est_usu` INT NULL,
+  `dni_usu` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_usu`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_queja` (
+  `cod_queja` INT NOT NULL,
+  `descrip_queja` VARCHAR(45) NULL,
+  `cod_usu` INT NULL,
+  `fec_queja` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `cod_fac` INT NULL,
+  PRIMARY KEY (`cod_queja`));
 
 
 
