@@ -30,6 +30,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `dni_trab` VARCHAR(45) NULL,
   `email_trab` VARCHAR(45) NULL,
   `tlf_trab` VARCHAR(45) NULL,
+  `cod_dir` INT NULL,
   PRIMARY KEY (`cod_trab`),
   FOREIGN KEY (`cod_rol`) REFERENCES tb_rol(`cod_rol`));
 
@@ -83,7 +84,6 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_boleta` (
   `fec_bol` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
   `cod_trab` INT NULL,
   `cod_usu` INT NULL,
-  `cod_ped` INT NULL,
   `cod_ven` INT NULL,
   PRIMARY KEY (`cod_bol`));
 
@@ -106,10 +106,102 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_queja` (
   `cod_usu` INT NULL,
   `fec_queja` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
   `cod_fac` INT NULL,
+  `cod_bol` INT NULL,
   PRIMARY KEY (`cod_queja`));
 
 
+CREATE TABLE `bd_venta_software_hardware`.`tb_solicitud_estado_pedido` (
+  `cod_sol_est_ped` INT NOT NULL,
+  `descrip_sol_est_ped` VARCHAR(45) NULL,
+  `cod_usu` INT NULL,
+  `cod_fac` INT NULL,
+  `cod_bol` INT NULL,
+  PRIMARY KEY (`cod_sol_est_ped`));
 
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_sugerencia` (
+  `cod_sug` INT NOT NULL,
+  `descrip_sug` VARCHAR(45) NULL,
+  `cod_usu` VARCHAR(45) NULL,
+  `fec_sug` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  PRIMARY KEY (`cod_sug`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_solicitud_reposicion` (
+  `cod_sol_repo` INT NOT NULL,
+  `descrip_sol_repo` VARCHAR(45) NULL,
+  `cod_usu` INT NULL,
+  `cod_prod` INT NULL,
+  `fec_sol_repo` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  PRIMARY KEY (`cod_sol_repo`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_termino_busqueda` (
+  `cod_tembuq` INT NOT NULL,
+  `descrip_tembuq` VARCHAR(45) NULL,
+  `cod_usu` INT NULL,
+  `fec_tembuq` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  PRIMARY KEY (`cod_tembuq`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_etiqueta` (
+  `cod_etiq` INT NOT NULL,
+  `descrip_etiq` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_etiq`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_producto` (
+  `cod_prod` INT NOT NULL,
+  `cod_marca` INT NULL,
+  `cod_cat` INT NULL,
+  `descrip_prod` VARCHAR(45) NULL,
+  `cod_caract` INT NULL,
+  `precio_prod` INT NULL,
+  `stk_prod` INT NULL,
+  `stk_min_prod` INT NULL,
+  `est_prod` INT NULL,
+  PRIMARY KEY (`cod_prod`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_det_carac_etiq` (
+  `cod_det_caract` INT NOT NULL,
+  `cod_etiq` INT NULL,
+  PRIMARY KEY (`cod_det_caract`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_marca` (
+  `cod_marca` INT NOT NULL,
+  `descrip_marca` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_marca`));
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
+  `cod_caract` INT NOT NULL,
+  `cod_det_caract` INT NULL,
+  PRIMARY KEY (`cod_caract`));
+
+
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_categoria` (
+  `cod_cat` INT NOT NULL,
+  `nom_cat` VARCHAR(45) NULL,
+  `descrip_cat` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_cat`));
+
+
+
+CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
+  `cod_det_caract` INT NOT NULL,
+  `procesador` VARCHAR(45) NULL,
+  `sistema_operativo` VARCHAR(45) NULL,
+  `memoria_ram` VARCHAR(45) NULL,
+  `almacenamiento` VARCHAR(45) NULL,
+  `color` VARCHAR(45) NULL,
+  `peso` VARCHAR(45) NULL,
+  `puerto_usb` VARCHAR(45) NULL,
+  `resolucion_pantalla` VARCHAR(45) NULL,
+  PRIMARY KEY (`cod_det_caract`));
 
 
 Select * from tb_direccion; 
