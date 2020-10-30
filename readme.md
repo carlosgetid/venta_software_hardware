@@ -4,3 +4,4 @@ Proyecto de Cibertec - Desarrollo de Aplicaciones Web
 ## integrantes:
 - Carlos Gómez (coordinador)
 (colocar sus nombres)
+- Saravia Higa
