@@ -3,4 +3,5 @@ Proyecto de Cibertec - Desarrollo de Aplicaciones Web
 
 ## integrantes:
 - Carlos Gómez (coordinador)
+- Flavio Cordova (integrante :D)
 (colocar sus nombres)
