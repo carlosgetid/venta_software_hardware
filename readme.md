@@ -3,4 +3,5 @@ Proyecto de Cibertec - Desarrollo de Aplicaciones Web
 
 ## integrantes:
 - Carlos Gómez (coordinador)
+- Juan Gutiérrez
 (colocar sus nombres)
