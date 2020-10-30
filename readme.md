@@ -6,4 +6,4 @@ Proyecto de Cibertec - Desarrollo de Aplicaciones Web
 - Juan Gutiérrez
 - Flavio Cordova (integrante :D)
 (colocar sus nombres)
-- Saravia Higa
+- Saravia Pablo
