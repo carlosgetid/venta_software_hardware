@@ -4,7 +4,6 @@ use bd_venta_software_hardware;
 
 
 
-
 CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `cod_dir` INT NOT NULL AUTO_INCREMENT,
   `descrip_dir` INT NULL,
@@ -40,33 +39,12 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Codigo_Provincia` varchar(2) NULL,
 	`Codigo_Distrito` varchar(2) NULL,
 	`Codigo` varchar(6) NULL,
-	`Descripcion` varchar(200) NULL,
+	`Descripcion` varchar(200) NULL
 	);
-
-CREATE TABLE `bd_venta_software_hardware`.`tb_rol`(
-	`cod_rol` INT NOT NULL AUTO_INCREMENT,
-	`descrip_rol` VARCHAR(30) NULL,
-    PRIMARY KEY (`cod_rol`)
-);
-
-CREATE TABLE `bd_venta_software_hardware`.`tb_trabajador`(
-	`cod_trab` INT NOT NULL AUTO_INCREMENT,
-	`cod_rol` INT NOT NULL,
-	`num_ruc_trab` char(11) null,
-	`ras_soc_trab` varchar(100) null,
-	`nom_trab` varchar(30) not null,
-	`ape_trab` varchar(30) not null,
-    `dni_trab` char(8) not null,
-    `email_trab` varchar(50) not null,
-    `tlf_trab` varchar(15) not null,
-    PRIMARY KEY (`cod_rol`)
-);
-
-
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_horario` (
   `cod_hor` INT NOT NULL,
-  `fec_hor` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_hor` DATETIME,
   PRIMARY KEY (`cod_hor`));
 
 
@@ -81,7 +59,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_pedido` (
 CREATE TABLE `bd_venta_software_hardware`.`tb_venta` (
   `cod_ven` INT NOT NULL,
   `num_tarj` INT NULL,
-  `fec_ven_tarj` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_ven_tarj` DATETIME,
   `cod_seg_tarj` INT NULL,
   `nom_titu_tarj` VARCHAR(45) NULL,
   `cod_ped` INT NULL,
@@ -90,8 +68,8 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_venta` (
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_factura` (
   `cod_fac` INT NOT NULL,
-  `fec_fac` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
-  `fec_ven_fac` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_fac` DATETIME,
+  `fec_ven_fac` DATETIME,
   `firm_fac` MEDIUMBLOB NULL,
   `cod_trab` INT NULL,
   `cod_usu` INT NULL,
@@ -101,7 +79,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_factura` (
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_boleta` (
   `cod_bol` INT NOT NULL,
-  `fec_bol` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_bol` DATETIME,
   `cod_trab` INT NULL,
   `cod_usu` INT NULL,
   `cod_ven` INT NULL,
@@ -124,7 +102,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_queja` (
   `cod_queja` INT NOT NULL,
   `descrip_queja` VARCHAR(45) NULL,
   `cod_usu` INT NULL,
-  `fec_queja` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_queja` DATETIME,
   `cod_fac` INT NULL,
   `cod_bol` INT NULL,
   PRIMARY KEY (`cod_queja`));
@@ -143,7 +121,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_sugerencia` (
   `cod_sug` INT NOT NULL,
   `descrip_sug` VARCHAR(45) NULL,
   `cod_usu` VARCHAR(45) NULL,
-  `fec_sug` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_sug` DATETIME,
   PRIMARY KEY (`cod_sug`));
 
 
@@ -152,16 +130,16 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_solicitud_reposicion` (
   `descrip_sol_repo` VARCHAR(45) NULL,
   `cod_usu` INT NULL,
   `cod_prod` INT NULL,
-  `fec_sol_repo` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
+  `fec_sol_repo` DATETIME,
   PRIMARY KEY (`cod_sol_repo`));
 
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_termino_busqueda` (
-  `cod_tembuq` INT NOT NULL,
+  `cod_tembuq` INT NOT NULL PRIMARY KEY,
   `descrip_tembuq` VARCHAR(45) NULL,
   `cod_usu` INT NULL,
-  `fec_tembuq` TIMESTAMP NOT NULL DEFAULT CURRENT_DATE(),
-  PRIMARY KEY (`cod_tembuq`));
+  `fec_tembuq` DATETIME
+  );
 
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_etiqueta` (
@@ -223,6 +201,4 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   `resolucion_pantalla` VARCHAR(45) NULL,
   PRIMARY KEY (`cod_det_caract`));
 
-
 Select * from tb_direccion; 
-
