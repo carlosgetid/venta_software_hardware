@@ -1,0 +1,56 @@
+#cuerpo{
+	display: flex;
+}
+
+.head-references{
+	margin: 0px 5px;
+
+}
+
+.busqueda-principal{
+	display: flex;
+	flex-direction: column;
+}
+
+.Principal{
+	width: 60%;
+	display: flex;
+	align-content: center;	
+}
+
+#txtFiltroPrincipal{
+	margin: 2px 40px;
+	
+	width: 70%;
+}
+
+.txtBuscarPrincipal{
+	margin-top: 20px; 
+}
+
+.PrincipalUp{
+	align-content: center;
+	width: 75%;
+}
+
+#filtro-izquierdo{
+	/* display: none; */
+	width: 30%;
+	background: aquamarine;
+	height: max-content;
+	border-right: 2px solid gray;
+	padding-right: 5px;
+}
+
+#linea-vertical{
+	width: 10px;
+	background-color: black;
+	height: 100%;
+	/* float: left; */
+}
+
+@media (max-width: 600px) {
+	body{
+		flex-direction: column;
+	}
+}
