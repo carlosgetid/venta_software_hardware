@@ -10,9 +10,7 @@
 	
 	<!-- registramos el filtro controlador de struts 2 -->
 
-	<listener>
-		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
-	</listener>
+	
 	
  	<filter>
         <filter-name>struts2</filter-name>
