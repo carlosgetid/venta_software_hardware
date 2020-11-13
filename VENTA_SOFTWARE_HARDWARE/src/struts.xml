@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+ 
+	<package name="dawi" namespace="/" extends="struts-default,json-default">
+	
+		<action name="registrarLibro" class="com.carlosgomez.action.LibroAction" method="registrar">
+			<result name="error">/registrar.jsp</result>
+			<result name="ok">/listar.jsp</result>
+		</action>
+		
+		<action name="aquiListando" class="com.carlosgomez.action.LibroAction" method="listar">
+			<result name="error">/listar.jsp</result>
+			<result name="ok">/listar.jsp</result>
+		</action>
+		
+		<action name="listarTemas" class="com.carlosgomez.action.TemaAction" method="listar">
+			<result type="json"></result>
+		</action> 
+		
+		<action name="aquiIniciandoRegistro" class="com.carlosgomez.action.LibroAction" method="iniciarRegistro">
+			<result name="ok">/registrar.jsp</result>
+		</action>
+		
+		<action name="eliminarLibro" class="com.carlosgomez.action.LibroAction" method="eliminar">
+			<result name="error">/listar.jsp</result>
+			<result name="ok">/listar.jsp</result>
+		</action>
+		
+		<action name="buscarLibro" class="com.carlosgomez.action.LibroAction" method="buscar">
+			<result name="error">/actualizar.jsp</result>
+			<result name="ok">/actualizar.jsp</result>
+		</action>
+		
+		<action name="actualizarLibro" class="com.carlosgomez.action.LibroAction" method="actualizar">
+			<result name="error">/listar.jsp</result>
+			<result name="ok">/listar.jsp</result>
+		</action>
+		
+		<action name="consultarLibro" class="com.carlosgomez.action.LibroAction" method="consultar">
+			<result name="error">/listar.jsp</result>
+			<result name="ok">/listar.jsp</result>
+		</action>
+	 
+	</package>
+
+</struts>
