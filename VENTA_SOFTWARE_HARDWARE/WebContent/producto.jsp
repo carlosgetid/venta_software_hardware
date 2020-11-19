@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ADMIN </title>
+<title>Productos </title>
 
 
 
@@ -74,7 +74,7 @@
 <body>
 
  	<!-- Left Panel -->
-     <jsp:include page="Navigate/aside.jsp"></jsp:include>
+   <jsp:include page="Navigate/aside.jsp"></jsp:include>
     <!-- /#left-panel -->
     
     
@@ -119,6 +119,8 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
 
                             <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
@@ -139,16 +141,56 @@
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
-              	<h1>HOLA</h1>
+              	
+              	<h1>Mantenimiento de Productos</h1>
+            	<a class="btn btn-primary" href="ListadoProductos">Listar</a>
+			 	<a class="btn btn-primary" href="IniciandoRegistro">Registrar</a>
             
+            	<table class="table table-bordered table-striped ">
+			
+					<tr>
+						<th>Id</th>
+						<th>Marca</th>
+						<th>Categoria</th>
+						<th>Area</th>
+						<th>Producto</th>
+						<th>Caracteristica</th>
+						<th>Precio</th>
+						<th>Stock</th>
+						<th></th>
+						<th></th>
+					</tr>
+					
+			
+						<s:iterator value="lstProducto">
+							
+							<tr class="grilla_campo">
+								
+								<td><s:property value="cod_prod"/> </td>
+								<td><s:property value="descrp_marca"/></td>
+								<td><s:property value="nom_cat"/></td>
+								<td><s:property value="descrp_cat"/></td>
+								<td><s:property value="descrip_prod"/></td>
+								<td><s:property value="mem_ram"/></td>
+								<td><s:property value="precio"/></td>
+								<td><s:property value="stock"/></td>
+								<td>
+									<s:url id="idEliminar" action="EliminarLibro">
+										<s:param name="idLibro" value="idLibro"></s:param>
+									</s:url>
+									<s:a href="%{idEliminar}"><img  src="img/delete.gif" title="Eliminar"/></s:a>
+								</td>
+								<td>
+									<s:url id="idActualizar" action="BuscarLibro">
+										<s:param name="idLibro" value="idLibro"></s:param>
+									</s:url>
+									<s:a href="%{idActualizar}"><img  src="img/edit.gif" title="Actualizar"/></s:a>
+								</td>
+							</tr>
+						</s:iterator>
+				</table>
             
-            
-            
-            
-            
-            
-            
-            
+ 
             </div>
             <!-- .animated -->
             
@@ -215,7 +257,7 @@
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
     <script src="assets/js/init/fullcalendar-init.js"></script>
-
+	
     <!--Local Stuff-->
     <script>
         jQuery(document).ready(function($) {
