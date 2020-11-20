@@ -48,10 +48,13 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   FOREIGN KEY (`cod_usu`) REFERENCES tb_usuario(`cod_usu`),
   FOREIGN KEY (`cod_dir`) REFERENCES tb_Ubigeos(`Codigo`));
 
- CREATE TABLE `bd_venta_software_hardware`.`tb_rol` (
-  `cod_rol` INT NOT NULL AUTO_INCREMENT,
-  `descrip_rol` VARCHAR(45)  NOT NULL,
-  PRIMARY KEY (`cod_rol`));
+ #CREATE TABLE `bd_venta_software_hardware`.`tb_rol` (
+ # `cod_rol` INT NOT NULL AUTO_INCREMENT,
+ # `descrip_rol` VARCHAR(45)  NOT NULL,
+ # PRIMARY KEY (`cod_rol`));
+ -------------------------------------------------------------------
+ INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL);
+ -------------------------------------------------------------------
 
  CREATE TABLE `bd_venta_software_hardware`.`tb_trabajador` (
   `cod_trab` INT NOT NULL AUTO_INCREMENT,
@@ -65,7 +68,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `tlf_trab` VARCHAR(45) NOT NULL,
   `cod_dir` INT NOT NULL,
   PRIMARY KEY (`cod_trab`),
-  FOREIGN KEY (`cod_rol`) REFERENCES tb_rol(`cod_rol`),
+  #FOREIGN KEY (`cod_rol`) REFERENCES tb_catalogo('id_Catalogo'+'id_subCatalogo'+'id_Tabla'),
   FOREIGN KEY (`cod_dir`) REFERENCES tb_direccion(`cod_dir`));
 
 
@@ -75,54 +78,64 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_horario` (
   PRIMARY KEY (`cod_hor`));
 
 
-CREATE TABLE `bd_venta_software_hardware`.`tb_marca` (
-  `cod_marca` INT NOT NULL AUTO_INCREMENT,
-  `descrip_marca` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cod_marca`));
+#CREATE TABLE `bd_venta_software_hardware`.`tb_marca` (
+#  `cod_marca` INT NOT NULL AUTO_INCREMENT,
+#  `descrip_marca` VARCHAR(45) NOT NULL,
+#  PRIMARY KEY (`cod_marca`));
   
 ----------------------
-INSERT INTO tb_marca values (null,'LG');
+#INSERT INTO tb_marca values (null,'LG');
+INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null);
 ----------------------
 
-CREATE TABLE `bd_venta_software_hardware`.`tb_categoria` (
-  `cod_cat` INT NOT NULL AUTO_INCREMENT,
-  `nom_cat` VARCHAR(200) NOT NULL,
-  `descrip_cat` VARCHAR(200) NOT NULL,
-  PRIMARY KEY (`cod_cat`));
+#CREATE TABLE `bd_venta_software_hardware`.`tb_categoria` (
+#  `cod_cat` INT NOT NULL AUTO_INCREMENT,
+#  `nom_cat` VARCHAR(200) NOT NULL,
+#  `descrip_cat` VARCHAR(200) NOT NULL,
+#  PRIMARY KEY (`cod_cat`));
   
 ---------
-insert into tb_categoria values(null,'PC','Informatica');
+#insert into tb_categoria values(null,'PC','Informatica');
+INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null);
 ---------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
-  `cod_det_caract` INT NOT NULL AUTO_INCREMENT,
-  `procesador` VARCHAR(45) NOT NULL, 
-  `sistema_operativo` VARCHAR(45) NOT NULL,
-  `memoria_ram` VARCHAR(45) NOT NULL,
-  `almacenamiento` VARCHAR(45) NOT NULL,
+  #`cod_det_caract` INT NOT NULL AUTO_INCREMENT,
+  `cod_prod` int not null,
+  `procesador` VARCHAR(6) NOT NULL, 
+  `sistema_operativo` VARCHAR(6) NOT NULL,
+  `memoria_ram` int NOT NULL,
+  `almacenamiento` int NOT NULL,
   `color` VARCHAR(45) NOT NULL,
   `peso` VARCHAR(45) NOT NULL,
   `puerto_usb` VARCHAR(45) NOT NULL,
-  `resolucion_pantalla` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`cod_det_caract`));
+  `resolucion_pantalla` VARCHAR(6) NOT NULL,
+  FOREIGN KEY (`cod_prod`) REFERENCES tb_producto(`cod_prod`));
+  
   
 -----------
-insert into tb_det_caracteristica values (null,'Nvidia','Windows','2 gb','8 gb','Negro','540 gr','Dual','26 px');
+INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null);
+INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null);
+INSERT INTO tb_catalogo values ('04','00','00','--SO--',null,null);
+INSERT INTO tb_catalogo values ('04','01','00','Windows',null,null);
+INSERT INTO tb_catalogo values ('05','00','00','--Resolucion Pantalla--',null,null);
+INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null);
+insert into tb_det_caracteristica values (null,'030100','040100','2 gb','8 gb','Negro','540 gr','Dual','050100');
 -----------
 
-CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
-  `cod_caract` INT NOT NULL AUTO_INCREMENT,
-  `cod_det_caract` INT NOT NULL,
-  PRIMARY KEY (`cod_caract`),
-  FOREIGN KEY (`cod_det_caract`) REFERENCES tb_det_caracteristica(`cod_det_caract`));
+#CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
+#  `cod_caract` INT NOT NULL AUTO_INCREMENT,
+#  `cod_det_caract` INT NOT NULL,
+#  PRIMARY KEY (`cod_caract`),
+#  FOREIGN KEY (`cod_det_caract`) REFERENCES tb_det_caracteristica(`cod_det_caract`));
 
 -----------------------
-insert into tb_caracteristica values (null,'1');
+#insert into tb_caracteristica values (null,'1');
 ----------------------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_producto` (
   `cod_prod` INT NOT NULL AUTO_INCREMENT,
-  `cod_marca` INT NULL,
+  `cod_marca` VARCHAR(6) NULL,
   `cod_cat` INT NULL,
   `descrip_prod` VARCHAR(200) NOT NULL,
   `cod_caract` INT NOT NULL,
@@ -130,11 +143,11 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_producto` (
   `stk_prod` INT NOT NULL,
   `stk_min_prod` INT NOT NULL,
   `est_prod` CHAR(1) NOT NULL,
-  PRIMARY KEY (`cod_prod`),
-  FOREIGN KEY (`cod_marca`) REFERENCES tb_marca(`cod_marca`),
-  FOREIGN KEY (`cod_cat`) REFERENCES tb_categoria(`cod_cat`),
-  FOREIGN KEY (`cod_caract`) REFERENCES tb_caracteristica(`cod_caract`));
-
+  PRIMARY KEY (`cod_prod`)
+  #FOREIGN KEY (`cod_marca`) REFERENCES tb_catalogo('id_Catalogo'+'id_subCatalogo'+'id_Tabla'),
+  #FOREIGN KEY (`cod_cat`) REFERENCES tb_catalogo('id_Catalogo'+'id_subCatalogo'+'id_Tabla'),
+  ##FOREIGN KEY (`cod_caract`) REFERENCES tb_caracteristica(`cod_caract`));
+);
 -----------------------
 insert into tb_producto values (null,1,1,'PC NVIDIA GAMER',1,2500.99,'3','1','A');
 SELECT * FROM tb_producto;
@@ -194,8 +207,8 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_queja` (
   `descrip_queja` VARCHAR(350) NOT NULL,
   `cod_usu` INT NOT NULL,
   `fec_queja` DATETIME NOT NULL,
-  `cod_fac` INT NOT NULL,
-  `cod_bol` INT NOT NULL,
+  `cod_fac` INT,
+  `cod_bol` INT,
   PRIMARY KEY (`cod_queja`),
   FOREIGN KEY (`cod_usu`) REFERENCES tb_usuario(`cod_usu`),
   FOREIGN KEY (`cod_fac`) REFERENCES tb_factura(`cod_fac`),
@@ -206,8 +219,8 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_solicitud_estado_pedido` (
   `cod_sol_est_ped` INT NOT NULL AUTO_INCREMENT,
   `descrip_sol_est_ped` VARCHAR(400) NOT NULL,
   `cod_usu` INT NOT NULL,
-  `cod_fac` INT NOT NULL,
-  `cod_bol` INT NOT NULL,
+  `cod_fac` INT,
+  `cod_bol` INT,
   PRIMARY KEY (`cod_sol_est_ped`),
   FOREIGN KEY (`cod_usu`) REFERENCES tb_usuario(`cod_usu`),
   FOREIGN KEY (`cod_fac`) REFERENCES tb_factura(`cod_fac`),
