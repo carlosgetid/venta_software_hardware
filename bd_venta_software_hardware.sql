@@ -7,6 +7,16 @@ use bd_venta_software_hardware;
 
 /*-----------------------------------------------------------------------------------------------------------------------------------------*/
 
+CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
+	`id_Catalogo` VARCHAR(2) NOT NULL,
+    `id_subCatalogo` VARCHAR(2) NOT NULL,
+    `id_Tabla` VARCHAR(2) NOT NULL,
+    `descripcion` varchar(500),
+    `valor1` varchar(500),
+    `valor2` int,
+    primary key(`id_Catalogo`,`id_subCatalogo`,`id_Tabla`)
+);
+
 CREATE TABLE `bd_venta_software_hardware`.`tb_usuario` (
   `cod_usu` INT NOT NULL AUTO_INCREMENT,
   `nom_usu` VARCHAR(45) NOT NULL,
