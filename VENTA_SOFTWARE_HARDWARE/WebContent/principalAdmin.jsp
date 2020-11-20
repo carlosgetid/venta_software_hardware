@@ -139,7 +139,7 @@
         <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
-              	<h1>HOLA</h1>
+              	<jsp:include page="registrarProducto.jsp"></jsp:include>
             
             
             
