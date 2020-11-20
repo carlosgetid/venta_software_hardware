@@ -17,6 +17,31 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
     primary key(`id_Catalogo`,`id_subCatalogo`,`id_Tabla`)
 );
 
+DELIMITER $$
+create function fn_catalogo(codigo varchar(6)) returns varchar(500)
+begin
+   declare descr VARCHAR(100);
+   declare id_cat VARCHAR(2);
+   declare id_subcat VARCHAR(10);
+   declare id_tab VARCHAR(2);
+
+   SET id_cat = LEFT(codigo,2);
+   SET id_subcat = SUBSTRING(codigo,3,2);
+   SET id_tab = RIGHT(codigo,2);
+
+   SELECT 
+	descr = descripcion
+   FROM TM_Catalogo
+   WHERE
+	id_catalogo = id_cat AND
+	id_subcatalogo = id_subcat AND
+	id_tabla = id_tab;
+   
+   return descr;
+end$$
+DELIMITER ;
+
+
 CREATE TABLE `bd_venta_software_hardware`.`tb_usuario` (
   `cod_usu` INT NOT NULL AUTO_INCREMENT,
   `nom_usu` VARCHAR(45) NOT NULL,
