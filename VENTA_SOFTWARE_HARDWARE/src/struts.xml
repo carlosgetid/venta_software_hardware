@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+ 
+	<package name="dawi" namespace="/" 
+			extends="struts-default,json-default">
+
+
+	<!-- ACTION LISTAR -->
+	<action name="ListadoProductos" class="com.empresa.proyecto.action.ProductoAction" method="listar">
+			<result name="error">/producto.jsp</result>
+			<result name="ok">/producto.jsp</result>
+	</action>
+	 	
+	 	
+
+		
+	  <!-- ACTION CARGAR COMBO MARCA-->
+	<action name="CargarMarca" class="com.empresa.proyecto.action.ProductoAction" method="listarMarca">
+			<result type="json"></result>
+	</action>
+	
+	 <!-- ACTION CARGAR COMBO CATEGORIA-->
+	<action name="CargarCategoria" class="com.empresa.proyecto.action.ProductoAction" method="listarCategoria">
+			<result type="json"></result>
+	</action>
+	
+	
+	  <!-- ACTION CARGAR COMBO MARCA-->
+	<action name="CargarDetCaracteristica" class="com.empresa.proyecto.action.ProductoAction" method="listarDetCaracteristica">
+			<result type="json"></result>
+	</action>
+	
+	
+
+	
+		
+		
+
+	</package>
+
+</struts>

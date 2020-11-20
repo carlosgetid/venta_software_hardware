@@ -79,12 +79,20 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_marca` (
   `cod_marca` INT NOT NULL AUTO_INCREMENT,
   `descrip_marca` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cod_marca`));
+  
+----------------------
+INSERT INTO tb_marca values (null,'LG');
+----------------------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_categoria` (
   `cod_cat` INT NOT NULL AUTO_INCREMENT,
   `nom_cat` VARCHAR(200) NOT NULL,
   `descrip_cat` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`cod_cat`));
+  
+---------
+insert into tb_categoria values(null,'PC','Informatica');
+---------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   `cod_det_caract` INT NOT NULL AUTO_INCREMENT,
@@ -97,7 +105,10 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   `puerto_usb` VARCHAR(45) NOT NULL,
   `resolucion_pantalla` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cod_det_caract`));
-
+  
+-----------
+insert into tb_det_caracteristica values (null,'Nvidia','Windows','2 gb','8 gb','Negro','540 gr','Dual','26 px');
+-----------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
   `cod_caract` INT NOT NULL AUTO_INCREMENT,
@@ -105,6 +116,9 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
   PRIMARY KEY (`cod_caract`),
   FOREIGN KEY (`cod_det_caract`) REFERENCES tb_det_caracteristica(`cod_det_caract`));
 
+-----------------------
+insert into tb_caracteristica values (null,'1');
+----------------------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_producto` (
   `cod_prod` INT NOT NULL AUTO_INCREMENT,
@@ -121,6 +135,10 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_producto` (
   FOREIGN KEY (`cod_cat`) REFERENCES tb_categoria(`cod_cat`),
   FOREIGN KEY (`cod_caract`) REFERENCES tb_caracteristica(`cod_caract`));
 
+-----------------------
+insert into tb_producto values (null,1,1,'PC NVIDIA GAMER',1,2500.99,'3','1','A');
+SELECT * FROM tb_producto;
+----------------------
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_pedido` (
   `cod_ped` INT NOT NULL AUTO_INCREMENT,
