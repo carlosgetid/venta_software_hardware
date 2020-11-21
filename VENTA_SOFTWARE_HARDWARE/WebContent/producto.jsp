@@ -7,7 +7,7 @@
 <html>
 <head>
 	
-   <jsp:include page="Navigate/aside.jsp"></jsp:include>
+    <jsp:include page="Navigate/layout.jsp"></jsp:include>
    
 
 </head>
@@ -63,13 +63,13 @@
 									<s:url id="idEliminar" action="EliminarLibro">
 										<s:param name="idLibro" value="idLibro"></s:param>
 									</s:url>
-									<s:a href="%{idEliminar}"><img  src="img/delete.gif" title="Eliminar"/></s:a>
+									<s:a href="%{idEliminar}"><img  src="images/delete.gif" title="Eliminar"/></s:a>
 								</td>
 								<td>
 									<s:url id="idActualizar" action="BuscarLibro">
 										<s:param name="idLibro" value="idLibro"></s:param>
 									</s:url>
-									<s:a href="%{idActualizar}"><img  src="img/edit.gif" title="Actualizar"/></s:a>
+									<s:a href="%{idActualizar}"><img  src="images/edit.gif" title="Actualizar"/></s:a>
 								</td>
 							</tr>
 						</s:iterator>

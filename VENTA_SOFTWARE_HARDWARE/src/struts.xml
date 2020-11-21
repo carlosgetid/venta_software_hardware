@@ -10,36 +10,13 @@
 			extends="struts-default,json-default">
 
 
-	<!-- ACTION LISTAR -->
-	<action name="ListadoProductos" class="com.empresa.proyecto.action.ProductoAction" method="listar">
-			<result name="error">/producto.jsp</result>
-			<result name="ok">/producto.jsp</result>
-	</action>
-	 	
-	 	
 
-		
-	  <!-- ACTION CARGAR COMBO MARCA-->
-	<action name="CargarMarca" class="com.empresa.proyecto.action.ProductoAction" method="listarMarca">
-			<result type="json"></result>
-	</action>
-	
-	 <!-- ACTION CARGAR COMBO CATEGORIA-->
-	<action name="CargarCategoria" class="com.empresa.proyecto.action.ProductoAction" method="listarCategoria">
-			<result type="json"></result>
-	</action>
-	
-	
-	  <!-- ACTION CARGAR COMBO MARCA-->
-	<action name="CargarDetCaracteristica" class="com.empresa.proyecto.action.ProductoAction" method="listarDetCaracteristica">
-			<result type="json"></result>
-	</action>
-	
-	
 
 	
-		
-		
+
+
+
+
 
 	</package>
 
