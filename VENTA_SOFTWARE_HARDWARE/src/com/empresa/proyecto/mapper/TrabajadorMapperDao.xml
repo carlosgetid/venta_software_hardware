@@ -1,1 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.empresa.proyecto.dao.ITrabajadorDao">
+
+
+
+	<select id="obtenerTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">	
+			
+			SELECT 
+					cod_trab as cod_trab,
+					cod_rol as cod_rol,
+					num_ruc as nro_ruc,
+					raz_soc as razon_soc,
+					nom_trab as nom_trab,
+					ape_trab as ape_trab,
+					dni_trab as dni_trab,
+					email_trab as email_trab,
+					tlf_trab as  telf_trab,
+					dir_trab  as dire_trab,
+					username as username,
+					paswoord as paswoord
+			FROM tb_trabajador
+			WHERE username = #{username}
+	</select>
+	
+</mapper>	

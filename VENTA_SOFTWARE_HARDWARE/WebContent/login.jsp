@@ -23,14 +23,15 @@
 	<s:actionmessage theme="bootstrap"/> 
 	<s:fielderror theme="bootstrap"/>
 	
-	<s:form action="iniciarSesionUsuario" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Login">
+	
+	<s:form action="Login" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Login">
 		
 		<s:textfield name = "username" id="username" type="text" placeholder="Usuario"/>
 <%--     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --%>
 <!--     <label for="exampleInputPassword1">Password</label> -->
 <%-- 	<s:textfield name = "email" id="email" type="email"/> --%>
 		
-		<s:password name = "password" id="repeatPassword" type="password" class="validate" placeholder="Contraseña"/>
+		<s:password name = "paswoord" id="repeatPassword" type="paswoord" class="validate" placeholder="Contraseña"/>
   		
   		<s:checkbox
                         label="Recuerdame"

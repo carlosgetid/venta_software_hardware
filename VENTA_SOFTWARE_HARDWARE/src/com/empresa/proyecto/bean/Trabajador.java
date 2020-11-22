@@ -3,11 +3,7 @@ package com.empresa.proyecto.bean;
 public class Trabajador {
 
 	private int cod_trab;
-	
-	private int cod_rol;
-	private String descripcion;
-	//descripcion viene del tb_catalogo
-	
+	private String cod_rol;
 	private String nro_ruc;
 	private String razon_soc;
 	private String nom_trab;
@@ -15,13 +11,15 @@ public class Trabajador {
 	private String dni_trab;
 	private String email_trab;
 	private String telf_trab;
+	private String dire_trab;
+	private String username;
+	private String paswoord;
 	
 	
-	private int id_dire;
-	private String nom_dire;
+	public String getNombreCompleto() {
+		return nom_trab.concat(" ").concat(ape_trab);
 	
-	
-	//PUEDE SER UN CONCAT ENTRE EL NOMBRE Y APELLIDO 
+	} 
 	
 	
 	
@@ -31,17 +29,11 @@ public class Trabajador {
 	public void setCod_trab(int cod_trab) {
 		this.cod_trab = cod_trab;
 	}
-	public int getCod_rol() {
+	public String getCod_rol() {
 		return cod_rol;
 	}
-	public void setCod_rol(int cod_rol) {
+	public void setCod_rol(String cod_rol) {
 		this.cod_rol = cod_rol;
-	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
 	}
 	public String getNro_ruc() {
 		return nro_ruc;
@@ -85,18 +77,26 @@ public class Trabajador {
 	public void setTelf_trab(String telf_trab) {
 		this.telf_trab = telf_trab;
 	}
-	public int getId_dire() {
-		return id_dire;
+	public String getDire_trab() {
+		return dire_trab;
 	}
-	public void setId_dire(int id_dire) {
-		this.id_dire = id_dire;
+	public void setDire_trab(String dire_trab) {
+		this.dire_trab = dire_trab;
 	}
-	public String getNom_dire() {
-		return nom_dire;
+	public String getUsername() {
+		return username;
 	}
-	public void setNom_dire(String nom_dire) {
-		this.nom_dire = nom_dire;
+	public void setUsername(String username) {
+		this.username = username;
 	}
+	public String getPaswoord() {
+		return paswoord;
+	}
+	public void setPaswoord(String paswoord) {
+		this.paswoord = paswoord;
+	}
+	
+	//PUEDE SER UN CONCAT ENTRE EL NOMBRE Y APELLIDO 
 	
 	
 	

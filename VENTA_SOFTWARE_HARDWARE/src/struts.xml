@@ -10,7 +10,11 @@
 			extends="struts-default,json-default">
 
 
-
+  <!-- ACTION BUSCAR -->		
+	 <action name="Login" class="com.empresa.proyecto.action.TrabajadorAction" method="buscar">
+			<result name="error">/producto.jsp</result>
+			<result name="ok">/producto.jsp</result>
+	</action>
 
 	
 

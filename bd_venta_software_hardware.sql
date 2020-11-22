@@ -59,6 +59,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_usuario` (
   `dni_usu` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`cod_usu`));
 
+
 CREATE TABLE `bd_venta_software_hardware`.`tb_Ubigeos`(
 	`Codigo` INT NOT NULL AUTO_INCREMENT ,
     `Codigo_Departamento` varchar(2) NOT NULL,
@@ -83,7 +84,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
 
  CREATE TABLE `bd_venta_software_hardware`.`tb_trabajador` (
   `cod_trab` INT NOT NULL AUTO_INCREMENT,
-  `cod_rol` INT NOT NULL,
+  `cod_rol` varchar(500) NOT NULL,
   `num_ruc` VARCHAR(45) NOT NULL,
   `raz_soc` VARCHAR(200) NOT NULL,
   `nom_trab` VARCHAR(45) NOT NULL,
@@ -91,11 +92,26 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   `dni_trab` VARCHAR(9) NOT NULL,
   `email_trab` VARCHAR(45) NOT NULL,
   `tlf_trab` VARCHAR(45) NOT NULL,
-  `cod_dir` INT NOT NULL,
-  PRIMARY KEY (`cod_trab`),
-  FOREIGN KEY (`cod_dir`) REFERENCES tb_direccion(`cod_dir`));
+  `dir_trab` varchar(45) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `paswoord` varchar(45) NOT NULL,
+  PRIMARY KEY (`cod_trab`));
+  
+  
 
 
+insert into tb_trabajador values (null,fn_catalogo('010100'),'4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
+insert into tb_trabajador values (null,fn_catalogo('010200'),'3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
+
+select * from tb_trabajador;
+
+INSERT INTO tb_catalogo values ('01','00','00','--ROLES--',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','01','00','Adminnistrador del sistema',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','02','00','Adminnistrador del negocio',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
+
+select * from tb_catalogo;
 
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_horario` (
