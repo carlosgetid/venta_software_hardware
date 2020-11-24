@@ -1,0 +1,19 @@
+html,body{
+    height: 100%;
+}
+
+.contenedor{
+    height: 100%;
+
+}
+
+.carruselProducto{
+    height: 60%;
+}
+
+.slogan{
+    text-align: center;
+    font-style: italic;
+}
+
+
