@@ -17,31 +17,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
     primary key(`id_Catalogo`,`id_subCatalogo`,`id_Tabla`)
 );
 
-DELIMITER $$
-CREATE FUNCTION  fn_catalogo(codigo varchar(6)) 
-RETURNS varchar(500)
-BEGIN
 
-   declare descr VARCHAR(100);
-   declare id_cat VARCHAR(2);
-   declare id_subcat VARCHAR(10);
-   declare id_tab VARCHAR(2);
-
-   SET id_cat = LEFT(codigo,2);
-   SET id_subcat = SUBSTRING(codigo,3,2);
-   SET id_tab = RIGHT(codigo,2);
-
-   SELECT 
-	 descripcion into descr
-   FROM tb_catalogo
-   WHERE
-	id_Catalogo = id_cat AND
-	id_subCatalogo = id_subcat AND
-	id_Tabla = id_tab;
-   
-   return descr;
-END$$
-DELIMITER ;
 
 
 
@@ -333,3 +309,28 @@ INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null);
 insert into tb_det_caracteristica values (null,'030100','040100','2 gb','8 gb','Negro','540 gr','Dual','050100');
 -----------------------------------------------------------------------------------------------------------------
 
+DELIMITER //
+CREATE FUNCTION  fn_catalogo(codigo varchar(6)) 
+RETURNS varchar(500) deterministic
+BEGIN
+   declare descr VARCHAR(100);
+   declare id_cat VARCHAR(2);
+   declare id_subcat VARCHAR(10);
+   declare id_tab VARCHAR(2);
+
+   SET id_cat = LEFT(codigo,2);
+   SET id_subcat = SUBSTRING(codigo,3,2);
+   SET id_tab = RIGHT(codigo,2);
+
+   SELECT 
+	 descripcion into descr
+   FROM tb_catalogo
+   WHERE
+	id_Catalogo = id_cat AND
+	id_subCatalogo = id_subcat AND
+	id_Tabla = id_tab;
+   
+   return descr;
+END
+//
+DELIMITER ;
