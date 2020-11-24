@@ -18,6 +18,10 @@
 
 	
 
+ <action name="lista" class="com.empresa.proyecto.action.TrabajadorAction" method="lista">
+			<result name="error">/producto.jsp</result>
+			<result name="ok">/producto.jsp</result>
+	</action>
 
 
 

@@ -1,5 +1,7 @@
 package com.empresa.proyecto.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.empresa.proyecto.bean.Trabajador;
@@ -22,6 +24,22 @@ public class TrabajadorServiceImpl implements ITrabajadorService {
 			session.close();
 		}
 		return trabajador;
+	}
+
+	@Override
+	public List<Trabajador> listaTrabajador() {
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		List<Trabajador> lista = null;
+		try {
+			ITrabajadorDao pm = session.getMapper(ITrabajadorDao.class);
+			lista = pm.listaTrabajador();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(""+e.toString());
+		}finally{
+			session.close();
+		}
+		return lista;
 	}
 	
 	 

@@ -100,8 +100,9 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_direccion` (
   
 
 
-insert into tb_trabajador values (null,fn_catalogo('010100'),'4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
-insert into tb_trabajador values (null,fn_catalogo('010200'),'3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
+
+insert into tb_trabajador values (null,'010100','4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
+insert into tb_trabajador values (null,'010100','3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
 
 select * from tb_trabajador;
 

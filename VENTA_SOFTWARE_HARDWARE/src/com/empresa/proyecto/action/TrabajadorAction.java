@@ -13,9 +13,15 @@ public class TrabajadorAction extends ActionSupport {
 
 	private Trabajador trabajador;
 	private String username;
+	private List<Trabajador> lstTrabajador;
 	
 	
-	
+	public List<Trabajador> getLstTrabajador() {
+		return lstTrabajador;
+	}
+	public void setLstTrabajador(List<Trabajador> lstTrabajador) {
+		this.lstTrabajador = lstTrabajador;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -87,6 +93,27 @@ public class TrabajadorAction extends ActionSupport {
 	
 	
 	
+	}
+	
+	
+	
+	
+	
+	public String lista()
+	{
+		TrabajadorServiceImpl servicio = new TrabajadorServiceImpl();
+		lstTrabajador = servicio.listaTrabajador();
+	
+		System.out.println("-----LISTAR------");
+		if(lstTrabajador ==null){
+			addActionError("Listado vacio");
+			return "error";
+		}else{
+			return "ok";
+		}
+		
+		
+		
 	}
 	
 	

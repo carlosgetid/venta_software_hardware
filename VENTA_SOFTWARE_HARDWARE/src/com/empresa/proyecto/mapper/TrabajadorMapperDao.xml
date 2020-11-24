@@ -26,4 +26,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE username = #{username}
 	</select>
 	
+	
+		<select id="listaTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">	
+			
+			SELECT 
+					cod_trab as cod_trab,
+					fn_catalogo(cod_rol) as cod_rol,
+					num_ruc as nro_ruc,
+					raz_soc as razon_soc,
+					nom_trab as nom_trab,
+					ape_trab as ape_trab,
+					dni_trab as dni_trab,
+					email_trab as email_trab,
+					tlf_trab as  telf_trab,
+					dir_trab  as dire_trab
+			FROM tb_trabajador
+	</select>
+	
+	
 </mapper>	
