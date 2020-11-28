@@ -18,12 +18,6 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
 );
 
 
-
-
-
-
-
-
 CREATE TABLE `bd_venta_software_hardware`.`tb_usuario` (
   `cod_usu` INT NOT NULL AUTO_INCREMENT,
   `nom_usu` VARCHAR(45) NOT NULL,
@@ -228,25 +222,6 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   );  
   
 
-
-insert into tb_trabajador values (null,'010100','4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
-insert into tb_trabajador values (null,'010200','3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
-
-select * from tb_trabajador;
-
-INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','01','00','Adminnistrador del sistema',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','02','00','Adminnistrador del negocio',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
-
-select * from tb_catalogo;
-
-
-
-
-
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------
  
  #CREATE TABLE `bd_venta_software_hardware`.`tb_rol` (
@@ -292,27 +267,7 @@ INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null);
 #insert into tb_caracteristica values (null,'1');
 -------------------------------------------------------------
 
- 
- 
- 
------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
--------------------------------------------------------------------------------------------------------------------
-INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null);
-INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null);
-INSERT INTO tb_catalogo values ('04','00','00','--SO--',null,null);
-INSERT INTO tb_catalogo values ('04','01','00','Windows',null,null);
-INSERT INTO tb_catalogo values ('05','00','00','--Resolucion Pantalla--',null,null);
-INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null);
-/*
-insert into tb_det_caracteristica values (null,'030100','040100','2 gb','8 gb','Negro','540 gr','Dual','050100');
-*/
------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DELIMITER //
 CREATE FUNCTION  fn_catalogo(codigo varchar(6)) 
@@ -341,6 +296,32 @@ END
 DELIMITER ;
 
 
-select * from tb_catalogo;
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null);
+INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null);
+INSERT INTO tb_catalogo values ('04','00','00','--SO--',null,null);
+INSERT INTO tb_catalogo values ('04','01','00','Windows',null,null);
+INSERT INTO tb_catalogo values ('05','00','00','--Resolucion Pantalla--',null,null);
+INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null);
+
+/*
+insert into tb_det_caracteristica values (null,'030100','040100','2 gb','8 gb','Negro','540 gr','Dual','050100');
+*/
+-----------------------------------------------------------------------------------------------------------------
+
+
+insert into tb_trabajador values (null,'010100','4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
+insert into tb_trabajador values (null,'010200','3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
 
 select * from tb_trabajador;
+
+INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','01','00','Adminnistrador del sistema',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','02','00','Adminnistrador del negocio',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL); 
+INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
+
+select * from tb_catalogo;

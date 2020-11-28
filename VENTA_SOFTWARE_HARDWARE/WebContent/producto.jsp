@@ -26,7 +26,7 @@
 				
 				<br/>
 			
-            	<a class="btn btn-primary" href="ListadoProductos">Listar</a>
+            	<a class="btn btn-primary" href="lista">Listar</a>
 			 	<a class="btn btn-primary" href="IniciandoRegistro">Registrar</a>
             
            		<br/>
@@ -35,30 +35,30 @@
 			
 					<tr>
 						<th>Id</th>
-						<th>Marca</th>
-						<th>Categoria</th>
-						<th>Area</th>
-						<th>Producto</th>
-						<th>Caracteristica</th>
-						<th>Precio</th>
-						<th>Stock</th>
+						<th>Rol</th>
+						<th>Ruc</th>
+						<th>Razon Social</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Dni</th>
+						<th>Email</th>
 						<th></th>
 						<th></th>
 					</tr>
 					
 			
-						<s:iterator value="lstProducto">
+						<s:iterator value="lstTrabajador">
 							
 							<tr class="grilla_campo">
 								
-								<td><s:property value="cod_prod"/> </td>
-								<td><s:property value="descrp_marca"/></td>
-								<td><s:property value="nom_cat"/></td>
-								<td><s:property value="descrp_cat"/></td>
-								<td><s:property value="descrip_prod"/></td>
-								<td><s:property value="mem_ram"/></td>
-								<td><s:property value="precio"/></td>
-								<td><s:property value="stock"/></td>
+								<td><s:property value="cod_trab"/> </td>
+								<td><s:property value="cod_rol"/></td>
+								<td><s:property value="nro_ruc"/></td>
+								<td><s:property value="razon_soc"/></td>
+								<td><s:property value="nom_trab"/></td>
+								<td><s:property value="ape_trab"/></td>
+								<td><s:property value="dni_trab"/></td>
+								<td><s:property value="email_trab"/></td>
 								<td>
 									<s:url id="idEliminar" action="EliminarLibro">
 										<s:param name="idLibro" value="idLibro"></s:param>
