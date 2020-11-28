@@ -7,13 +7,24 @@ html,body{
 
 }
 
-.carruselProducto{
-    height: 60%;
+.indicadores-ol{
+	position: static !important;
+	display: block !important;
 }
 
-.slogan{
-    text-align: center;
-    font-style: italic;
+.indicadores-li{
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
+.carousel-control-next-icon:after
+{
+  content: '>' !important;
+  color: #808080 !important;
+}
 
+.carousel-control-prev-icon:after
+{
+  content: '<' !important;
+  color: #808080 !important;
+}

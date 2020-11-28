@@ -1,3 +1,4 @@
+	
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -7,43 +8,65 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Bienvenido a ... </title>
 <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/estilosVerProducto.css">
+    <jsp:include page="Navigate/layoutCliente.jsp"></jsp:include>
+    <title>Bienvenido a ... </title>
 </head>
 <body>
-	<jsp:include page="Navigate/layoutCliente.jsp"></jsp:include>
 	
-	<div class="row carruselProducto" style="padding: 20px;">
-      <div id="carouselExampleIndicators" class="carousel slide col-md-5 h-100" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> 
-        </ol>
-        <div class="carousel-inner h-100">
-          <div class="carousel-item active h-100">
-            <img class="d-block w-100 h-100" src="images/verProducto/1.jpg" alt="First slide">
-          </div>
-          <div class="carousel-item h-100">
-            <img class="d-block w-100 h-100" src="images/verProducto/2.jpg" alt="Second slide">
-          </div>
-          <div class="carousel-item h-100">
-            <img class="d-block w-100 h-100" src="images/verProducto/3.jpg" alt="Third slide">
-          </div>
+
+<div class="container">
+
+    <!--Carousel Wrapper-->
+    <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails row" data-ride="carousel">
+	<!-- columna miniaturas -->
+	<div class="col-md-1">
+		<!--/.Controls-->
+      <ol class="carousel-indicators h-100 indicadores-ol">
+        <li data-target="#carousel-thumb" data-slide-to="0" class="row w-100 active indicadores-li"> <img class="d-block w-100" src="images/verProducto/1.jpg"
+            class="img-fluid"></li>
+        <li data-target="#carousel-thumb" data-slide-to="1" class="row w-100 indicadores-li"><img class="d-block w-100" src="images/verProducto/2.jpg"
+            class="img-fluid"></li>
+        <li data-target="#carousel-thumb" data-slide-to="2" class="row w-100 indicadores-li"><img class="d-block w-100" src="images/verProducto/3.jpg"
+            class="img-fluid"></li>
+      </ol>
+	</div>
+	<!-- columna miniaturas -->
+	<!-- columna carrusel y flechas -->
+      <div class="col-md-5">
+      	<!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="images/verProducto/1.jpg" alt="First slide">
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/verProducto/2.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="images/verProducto/3.jpg" alt="Third slide">
+        </div>
       </div>
+
+      <!--/.Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      </div>
+	<!-- columna carrusel y flechas -->
+      
     </div>
+    <!--/.Carousel Wrapper-->
+
+  </div>
 	
 	
 	<!-- JS, Popper.js, and jQuery -->
