@@ -7,8 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<select id="obtenerTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">	
-			
+	<select id="obtenerTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">
 			SELECT 
 					cod_trab as cod_trab,
 					cod_rol as cod_rol,
@@ -27,8 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-		<select id="listaTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">	
-			
+		<select id="listaTrabajador" resultType="com.empresa.proyecto.bean.Trabajador">
 			SELECT 
 					cod_trab as cod_trab,
 					fn_catalogo(cod_rol) as cod_rol,

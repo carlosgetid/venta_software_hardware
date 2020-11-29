@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 						<property name="driver" value="com.mysql.cj.jdbc.Driver" />
 						<property name="url" value="jdbc:mysql://localhost/bd_venta_software_hardware?serverTimezone=UTC" />
 						<property name="username" value="root" />
-						<property name="password" value="mysql" />
+						<property name="password" value="abcd.1234" />
 						
 			</dataSource>
 		</environment>
@@ -26,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 	
 		<mapper resource="com/empresa/proyecto/mapper/TrabajadorMapperDao.xml"/>
+		<mapper resource="com/empresa/proyecto/mapper/CatalogoMapperDao.xml"/>
 	
 	</mappers>
 	

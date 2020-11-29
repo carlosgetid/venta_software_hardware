@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.empresa.proyecto.dao.ICatalogoDao">
+	<!-- CRUD de MARCA -->
+	<insert id="insertarMarca" parameterType="com.empresa.proyecto.bean.Catalogo">
+		insert into tb_catalogo values ('01',
+										#{cod_subcatalogo},
+										'00',
+										#{descrip_catalogo},
+										null,
+										null)
+	</insert>
+	<select id="listarMarca" resultType="com.empresa.proyecto.bean.Catalogo">
+		select id_Catalogo+id_subCatalogo+id_Tabla as cod_catalogo,
+	    	   descripcion as descripcion
+		from tb_catalogo 
+		where id_Catalogo='01' order by 2
+	</select>
+	<delete id="eliminarMarca" parameterType="int">
+		delete from tb_catalogo where id_subCatalogo=#{cod_subCatalogo} and id_catalogo='01'
+	</delete>
+	<update id="actualizarMarca" parameterType="com.empresa.proyecto.bean.Catalogo">
+		update tb_catalogo 
+		set descripcion = #{descrip_catalogo}
+		where id_catalogo='01' and 
+			  id_subCatalogo=#{cod_subcatalogo}
+	</update>
+	
+	
+</mapper>

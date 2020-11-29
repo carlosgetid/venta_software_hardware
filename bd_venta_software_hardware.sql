@@ -240,7 +240,11 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   
 --------------------------------------------------------------------------
 #INSERT INTO tb_marca values (null,'LG');
-INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null);
+INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null),
+							   ('01','01','00','DELL',null,null),
+							   ('01','02','00','LENOVO',null,null),
+                               ('01','03','00','HP',null,null),
+                               ('01','04','00','ACER',null,null);
 ------------------------------------------------------------------------
  
 

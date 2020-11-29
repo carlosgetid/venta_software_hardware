@@ -11,19 +11,32 @@
 
 
   <!-- ACTION BUSCAR -->		
-	 <action name="Login" class="com.empresa.proyecto.action.TrabajadorAction" method="buscar">
+	<action name="Login" class="com.empresa.proyecto.action.TrabajadorAction" method="buscar">
 			<result name="error">/producto.jsp</result>
 			<result name="ok">/producto.jsp</result>
 	</action>
 
 	
 
- <action name="lista" class="com.empresa.proyecto.action.TrabajadorAction" method="lista">
+ 	<action name="lista" class="com.empresa.proyecto.action.TrabajadorAction" method="lista">
 			<result name="error">/producto.jsp</result>
 			<result name="ok">/producto.jsp</result>
 	</action>
 
-
+	<action name="registrarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="registrarMarca">
+		<result name="registro"></result>
+		<result name="error"></result>
+	</action>
+	
+	<action name="listaMarcas" class="com.empresa.proyecto.action.CatalogoAction" method="listarMarcas">
+		<result name="listaMarcas"></result>
+		<result name="error"></result>
+	</action>
+	
+	<action name="eliminarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="eliminarMarca">
+		<result name="eliminadoMarca"></result>
+		<result name="error"></result>
+	</action>
 
 
 	</package>
