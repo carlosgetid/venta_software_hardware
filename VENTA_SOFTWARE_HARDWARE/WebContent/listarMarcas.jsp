@@ -30,7 +30,29 @@
 				<br/>
 			
             	<a class="btn btn-primary" href="listaMarcas">Listar</a>
-			 	<a class="btn btn-primary" href="">Registrar</a>
+			 	<br/>
+			 	<s:form action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
+					<s:hidden id="idSeleccion" name="idSeleccion" />
+
+					<label id="idMantLabelMarca">Descripcion</label>
+					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
+			
+				<s:submit cssClass="btn" value="Registrar"/>
+				</s:form>
+
+		
+<%-- 		<sj:submit id="idFormLibroActualizar" value="Actualizar" button="true" --%>
+<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
+<%-- 			onclick="javascript:actualizarVendedor();" /> --%>
+		
+<%-- 		<sj:submit id="idFormLibroEliminar" value="Eliminar" button="true" --%>
+<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
+<%-- 			onclick="javascript:eliminaVendedor();" /> --%>
+		
+<%-- 		<sj:submit id="idFormLibroSalir" value="Listar" button="true" --%>
+<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
+<%-- 			onclick="javascript:listaLibro();" /> --%>
+
             
             
            		<br/>

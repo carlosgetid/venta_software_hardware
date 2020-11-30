@@ -14,17 +14,10 @@ public class CatalogoServiceImpl implements ICatalogoService{
 	public List<Catalogo> lstMarca() {
 		List<Catalogo> marca = null;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
-		System.out.println("entro antes del try");
-		System.out.println("entro antes del try");
-		System.out.println("entro antes del try");
-		System.out.println("entro antes del try");
-		System.out.println("entro antes del try");
-		System.out.println("entro antes del try");
 		try{
-			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
 			System.out.println("------Listando Marcas------");
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
 			marca = cm.lstMarca();
-			System.out.println("------Listando Marcas 2------");
 		} catch (Exception e){
 			return null;
 		}
@@ -35,9 +28,16 @@ public class CatalogoServiceImpl implements ICatalogoService{
 	public int insertarMarca(Catalogo marca) {
 		int ok = 0;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		System.out.println("-------REGISTRAR MARCA 5--------");
+
 		try{
-			CatalogoServiceImpl cm = session.getMapper(CatalogoServiceImpl.class);
+			System.out.println("-------REGISTRAR MARCA 6--------");
+
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			System.out.println("-------REGISTRAR MARCA 7--------");
+
 			ok = cm.insertarMarca(marca);
+			System.out.println("-------REGISTRAR MARCA 8--------");
 			session.commit();
 		} catch(Exception e){
 			System.out.println(""+e.toString());

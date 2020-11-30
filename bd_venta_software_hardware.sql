@@ -9,9 +9,9 @@ use bd_venta_software_hardware;
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
 	`id_Catalogo` VARCHAR(2) NOT NULL,
-    `id_subCatalogo` VARCHAR(2) NOT NULL,
+    `id_subCatalogo` VARCHAR(20) NOT NULL,
     `id_Tabla` VARCHAR(2) NOT NULL,
-    `descripcion` varchar(500),
+    `descripcion` varchar(500) NOT NULL,
     `valor1` varchar(500),
     `valor2` int,
     primary key(`id_Catalogo`,`id_subCatalogo`,`id_Tabla`)
@@ -329,3 +329,13 @@ INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL);
 INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
 
 select * from tb_catalogo;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertMarca`(p_descrip varchar(500))
+BEGIN
+	declare subid varchar(20);
+    set subid = (select distinct(concat('0',count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01');
+		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, null);
+END
+//
+DELIMITER ;

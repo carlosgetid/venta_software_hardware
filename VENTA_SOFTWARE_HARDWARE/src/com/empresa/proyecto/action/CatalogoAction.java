@@ -14,23 +14,23 @@ public class CatalogoAction extends ActionSupport {
 	
 	public String registrarMarca(){
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
+		System.out.println("-------REGISTRAR MARCA--------");
+		catalogo = new Catalogo();
+		catalogo.setDescrip_catalogo(descrip_catalogo);
 		int ok = service.insertarMarca(catalogo);
+		System.out.println("-------REGISTRAR MARCA 2--------");
 		if(ok==0){
+			System.out.println("-------REGISTRAR MARCA 3--------");
 			addActionError("Error al registrar");
 			return "error";
 		} else{
+			System.out.println("-------REGISTRAR MARCA 4--------");
 			addActionMessage("Registro exitoso!");
-			return "registro";
+			return "ok";
 		}
 	}
 	
 	public String listarMarcas(){
-		System.out.println("entro");
-		System.out.println("entro");
-		System.out.println("entro");
-		System.out.println("entro");
-		System.out.println("entro");
-		System.out.println("entro");
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
 		marcas = service.lstMarca();
 		if(marcas == null){

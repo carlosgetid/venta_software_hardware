@@ -5,13 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.empresa.proyecto.dao.ICatalogoDao">
 	<!-- CRUD de MARCA -->
-	<insert id="insertarMarca" parameterType="com.empresa.proyecto.bean.Catalogo">
-		insert into tb_catalogo values ('01',
-										#{cod_subcatalogo},
-										'00',
-										#{descrip_catalogo},
-										null,
-										null)
+	<insert id="insertarMarca" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+		call sp_insertMarca(#{descrip_catalogo});
 	</insert>
 	<select id="lstMarca" resultType="com.empresa.proyecto.bean.Catalogo">
 		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
