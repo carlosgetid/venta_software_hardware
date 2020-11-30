@@ -10,6 +10,7 @@ public class CatalogoAction extends ActionSupport {
 	private Catalogo catalogo;
 	private List<Catalogo> marcas;
 	private int cod_subCatalogo;
+	private String descrip_catalogo;
 	
 	public String registrarMarca(){
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
@@ -24,8 +25,14 @@ public class CatalogoAction extends ActionSupport {
 	}
 	
 	public String listarMarcas(){
+		System.out.println("entro");
+		System.out.println("entro");
+		System.out.println("entro");
+		System.out.println("entro");
+		System.out.println("entro");
+		System.out.println("entro");
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
-		marcas = service.lstMarca("01");
+		marcas = service.lstMarca();
 		if(marcas == null){
 			addActionError("Error al listar.");
 			return "error";
@@ -50,8 +57,6 @@ public class CatalogoAction extends ActionSupport {
 		}
 		
 	}
-	
-	
 
 	public Catalogo getCatalogo() {
 		return catalogo;
@@ -61,11 +66,32 @@ public class CatalogoAction extends ActionSupport {
 		this.catalogo = catalogo;
 	}
 
-	public int getCodigo() {
+	public List<Catalogo> getMarcas() {
+		return marcas;
+	}
+
+	public void setMarcas(List<Catalogo> marcas) {
+		this.marcas = marcas;
+	}
+
+	public int getCod_subCatalogo() {
 		return cod_subCatalogo;
 	}
 
-	public void setCodigo(int codigo) {
-		this.cod_subCatalogo = codigo;
+	public void setCod_subCatalogo(int cod_subCatalogo) {
+		this.cod_subCatalogo = cod_subCatalogo;
 	}
+
+	public String getDescrip_catalogo() {
+		return descrip_catalogo;
+	}
+
+	public void setDescrip_catalogo(String descrip_catalogo) {
+		this.descrip_catalogo = descrip_catalogo;
+	}
+	
+	
+	
+	
+	
 }

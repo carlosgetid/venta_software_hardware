@@ -29,8 +29,8 @@
 	</action>
 	
 	<action name="listaMarcas" class="com.empresa.proyecto.action.CatalogoAction" method="listarMarcas">
-		<result name="listaMarcas"></result>
-		<result name="error"></result>
+			<result name="listaMarcas">/listarMarcas.jsp</result>
+		<result name="error">/listarMarcas.jsp</result>
 	</action>
 	
 	<action name="eliminarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="eliminarMarca">

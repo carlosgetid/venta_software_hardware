@@ -11,13 +11,20 @@ import com.empresa.proyecto.util.MybatisUtil;
 public class CatalogoServiceImpl implements ICatalogoService{
 	
 	@Override
-	public List<Catalogo> lstMarca(String codigo) {
+	public List<Catalogo> lstMarca() {
 		List<Catalogo> marca = null;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		System.out.println("entro antes del try");
+		System.out.println("entro antes del try");
+		System.out.println("entro antes del try");
+		System.out.println("entro antes del try");
+		System.out.println("entro antes del try");
+		System.out.println("entro antes del try");
 		try{
 			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
-			marca = cm.lstMarca("01");
 			System.out.println("------Listando Marcas------");
+			marca = cm.lstMarca();
+			System.out.println("------Listando Marcas 2------");
 		} catch (Exception e){
 			return null;
 		}
