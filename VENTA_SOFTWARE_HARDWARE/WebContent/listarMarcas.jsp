@@ -29,7 +29,7 @@
 				
 				<br/>
 			
-            	<a class="btn btn-primary" href="listaMarcas">Listar</a>
+            	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
 			 	<br/>
 			 	<s:form action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
 					<s:hidden id="idSeleccion" name="idSeleccion" />
@@ -37,7 +37,8 @@
 					<label id="idMantLabelMarca">Descripcion</label>
 					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
 			
-				<s:submit cssClass="btn" value="Registrar"/>
+				<s:submit cssClass="btn btn-success" value="Registrar"/>
+				<s:submit cssClass="btn btn-success" value="Actualizar"/>
 				</s:form>
 
 		
@@ -66,11 +67,9 @@
 					
 			
 						<s:iterator value="marcas">
-							
-							<tr class="grilla_campo">
-								
+							<tr  >
 								<td><s:property value="cod_catalogo"/> </td>
-								<td><s:property value="descrip_catalogo"/></td>
+								<td class="delbtn"><s:property value="descrip_catalogo" /></td>
 							</tr>
 						</s:iterator>
 				</table>
@@ -89,8 +88,6 @@
 </section>
 
 
-
-
   <!-- JS, Popper.js, and jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -101,6 +98,23 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
+
+<script>
+jQuery('.delbtn').on('click', function() {
+    var $row = jQuery(this).closest('tr');
+    var $columns = $row.find('td');
+
+    $columns.addClass('row-highlight');
+    var values = "";
+
+    jQuery.each($columns, function(i, item) {
+        values = values + 'td' + (i + 1) + ':' + item.innerHTML + '<br/>';
+        alert(values);
+    });
+    console.log(values);
+});
+
+</script>
 	
 </body>
 </html>
