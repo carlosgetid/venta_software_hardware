@@ -42,7 +42,7 @@
             <div class="col-lg-12">      
           		<br/>
           		
-				<h1>Mantenimiento de Productos</h1>
+				<h1>Mantenimiento de Marcas</h1>
 				
 				<br/>
 			
