@@ -1,21 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
+
+<!-- layout librerias -->
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
     
 <!DOCTYPE html>
 <html>
 <head>
+<!-- layout estilos -->
+<jsp:include page="Navigate/styleLayout.jsp"></jsp:include>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Listado de marcas</title>
  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+	
+<!-- 	layout superior -->
+	<jsp:include page="Navigate/superior.jsp"></jsp:include>
+	
+<!-- 	contenido inicio -->
 	<script>
 	function eliminarMarca() {
 		$('#idForm').attr('action', 'eliminarMarca');
@@ -37,20 +49,17 @@
             	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
 			 	<br/>
 			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
-					<s:textfield id="idMarca" name="idMarca" />
+					<s:hidden id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
 					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
-			
+				<br/>
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
 				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
 				<sj:submit value="Eliminar" button="true" cssClass="btn btn-danger" formIds="idForm"
 				onclick="javascript:eliminarMarca();" />
 				</s:form>
 				
-
-
-
            		<br/>
            		<br/>
             	<table class="table table-bordered table-striped  ">
@@ -80,7 +89,7 @@
    	
     </div>   
  
-</section>
+	</section>
 
 
   <!-- JS, Popper.js, and jQuery -->
@@ -112,6 +121,9 @@ jQuery('.delbtn').on('click', function() {
 });
 
 </script>
-	
+<!-- contenido fin	 -->
+
+<!-- layout inferior -->
+	<jsp:include page="Navigate/inferior.jsp"></jsp:include>
 </body>
 </html>
