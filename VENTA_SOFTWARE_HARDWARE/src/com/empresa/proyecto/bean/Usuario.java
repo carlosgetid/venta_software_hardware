@@ -2,8 +2,8 @@ package com.empresa.proyecto.bean;
 
 public class Usuario {
 
-	private int cod_usu;
-	private String nom_usu;
+	private int codigo_usu;
+	private String nombre_usu;
 	private String ape_usu;
 	private String email_usu;
 	private String telf_usu;
@@ -25,20 +25,21 @@ PUEDE SER UN CONCAT ENTRE EL NOMBRE Y APELLIDO
 	
 	
 	
-	public int getCod_usu() {
-		return cod_usu;
-	}
-	public void setCod_usu(int cod_usu) {
-		this.cod_usu = cod_usu;
-	}
-	public String getNom_usu() {
-		return nom_usu;
-	}
-	public void setNom_usu(String nom_usu) {
-		this.nom_usu = nom_usu;
-	}
+	
 	public String getApe_usu() {
 		return ape_usu;
+	}
+	public int getCodigo_usu() {
+		return codigo_usu;
+	}
+	public void setCodigo_usu(int codigo_usu) {
+		this.codigo_usu = codigo_usu;
+	}
+	public String getNombre_usu() {
+		return nombre_usu;
+	}
+	public void setNombre_usu(String nombre_usu) {
+		this.nombre_usu = nombre_usu;
 	}
 	public void setApe_usu(String ape_usu) {
 		this.ape_usu = ape_usu;

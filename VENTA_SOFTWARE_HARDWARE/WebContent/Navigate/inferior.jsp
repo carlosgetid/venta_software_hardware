@@ -1,4 +1,4 @@
-<<<<<<< HEAD:VENTA_SOFTWARE_HARDWARE/WebContent/Navigate/layout.jsp
+
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.Map"%>
@@ -256,9 +256,9 @@
         
         
     </div>
-=======
+
 </div>
->>>>>>> 2e80878bfd55e6df87455fd03feb4262fa2117fd:VENTA_SOFTWARE_HARDWARE/WebContent/Navigate/inferior.jsp
+
     <!-- /#right-panel -->
 
 
