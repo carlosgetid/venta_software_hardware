@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-<!--   <link rel="stylesheet" href="css/estilos_todos_productos.css"> -->
 </head>
 <body>
 	<script>
@@ -50,21 +50,7 @@
 				
 
 
-		
-<%-- 		<sj:submit id="idFormLibroActualizar" value="Actualizar" button="true" --%>
-<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
-<%-- 			onclick="javascript:actualizarVendedor();" /> --%>
-		
-<%-- 		<sj:submit id="idFormLibroEliminar" value="Eliminar" button="true" --%>
-<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
-<%-- 			onclick="javascript:eliminaVendedor();" /> --%>
-		
-<%-- 		<sj:submit id="idFormLibroSalir" value="Listar" button="true" --%>
-<%-- 			targets="idDivLibroResultado" formIds="idForm" --%>
-<%-- 			onclick="javascript:listaLibro();" /> --%>
 
-            
-            
            		<br/>
            		<br/>
             	<table class="table table-bordered table-striped  ">

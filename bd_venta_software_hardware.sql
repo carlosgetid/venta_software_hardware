@@ -347,7 +347,7 @@ END
 //
 DELIMITER ;
 
-describe tb_catalogo;
+
 
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2), p_descrip varchar(500))
