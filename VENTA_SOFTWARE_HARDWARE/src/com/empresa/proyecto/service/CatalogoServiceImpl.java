@@ -45,12 +45,12 @@ public class CatalogoServiceImpl implements ICatalogoService{
 	}
 
 	@Override
-	public int eliminarMarca(int cod_subCatalogo) {
+	public int eliminarMarca(Catalogo x) {
 		int ok=0;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
 		try{
-			CatalogoServiceImpl cm = session.getMapper(CatalogoServiceImpl.class);
-			ok = cm.eliminarMarca(cod_subCatalogo);
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			ok = cm.eliminarMarca(x);
 			session.commit();
 		} catch(Exception e){
 			System.out.println(""+e.toString());

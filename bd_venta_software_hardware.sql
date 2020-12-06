@@ -241,10 +241,10 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
 --------------------------------------------------------------------------
 #INSERT INTO tb_marca values (null,'LG');
 INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null),
-							   ('01','01','00','DELL',null,null),
-							   ('01','02','00','LENOVO',null,null),
-                               ('01','03','00','HP',null,null),
-                               ('01','04','00','ACER',null,null);
+							   ('01','01','00','DELL',null,1),
+							   ('01','02','00','LENOVO',null,1),
+                               ('01','03','00','HP',null,1),
+                               ('01','04','00','ACER',null,1);
 ------------------------------------------------------------------------
  
 
@@ -342,7 +342,7 @@ BEGIN
 	end if;
     
     set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01' and id_subCatalogo!="00");
-		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, null);
+		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1);
 END
 //
 DELIMITER ;
@@ -353,6 +353,14 @@ DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2), p_descrip varchar(500))
 BEGIN
 	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `descripcion`=p_descrip WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_deleteMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `valor2`='0' WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
 END
 //
 DELIMITER ;

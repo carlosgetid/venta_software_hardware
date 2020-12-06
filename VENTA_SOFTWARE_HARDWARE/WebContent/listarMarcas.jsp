@@ -16,6 +16,11 @@
 <!--   <link rel="stylesheet" href="css/estilos_todos_productos.css"> -->
 </head>
 <body>
+	<script>
+	function eliminarMarca() {
+		$('#idForm').attr('action', 'eliminarMarca');
+	}
+	</script>
 	<section> 
  
    <div class="container">
@@ -31,7 +36,7 @@
 			
             	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
 			 	<br/>
-			 	<s:form action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
+			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
 					<s:textfield id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
@@ -39,7 +44,11 @@
 			
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
 				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
+				<sj:submit value="Eliminar" button="true" cssClass="btn btn-danger" formIds="idForm"
+				onclick="javascript:eliminarMarca();" />
 				</s:form>
+				
+
 
 		
 <%-- 		<sj:submit id="idFormLibroActualizar" value="Actualizar" button="true" --%>

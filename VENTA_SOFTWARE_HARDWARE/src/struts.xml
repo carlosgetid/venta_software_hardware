@@ -24,7 +24,7 @@
 	</action>
 
 	<action name="registrarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="registrarMarca">
-		<result name="error">/registrar.jsp</result>
+		<result name="error">/listarMarcas.jsp</result>
 			<result name="ok">/listarMarcas.jsp</result>
 	</action>
 	
@@ -34,8 +34,8 @@
 	</action>
 	
 	<action name="eliminarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="eliminarMarca">
-		<result name="eliminadoMarca"></result>
-		<result name="error"></result>
+		<result name="error">/listarMarcas.jsp</result>
+			<result name="ok">/listarMarcas.jsp</result>
 	</action>
 
 

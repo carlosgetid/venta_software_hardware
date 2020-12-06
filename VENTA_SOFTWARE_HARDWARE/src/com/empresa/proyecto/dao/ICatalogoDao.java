@@ -8,5 +8,5 @@ public interface ICatalogoDao {
 	public List<Catalogo> lstMarca();
 	public int insertarMarca(Catalogo x);
 	public int actualizarMarca(Catalogo x);
-	public int eliminarMarca(int cod_subCatalogo);
+	public int eliminarMarca(Catalogo x);
 }
