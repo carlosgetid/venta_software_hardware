@@ -48,7 +48,7 @@
 			
             	<a id="botonListar" class="btn btn-primary" href="listarTeclados">Listar</a>
 			 	<br/>
-			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Producto">
+			 	<s:form id="idForm" action="registrarTeclado" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Producto">
 					<s:hidden id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
