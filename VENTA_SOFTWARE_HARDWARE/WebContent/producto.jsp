@@ -1,17 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags" %>
+
+<!-- layout librerias -->
+<%@page import="java.util.List"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 <html>
 <head>
-	
-    <jsp:include page="Navigate/layout.jsp"></jsp:include>
+<!-- layout estilos -->
+<jsp:include page="Navigate/styleLayout.jsp"></jsp:include>
    
 
 </head>
 <body>
+	
+<!-- 	layout superior -->
+<jsp:include page="Navigate/superior.jsp"></jsp:include>
+<!-- 	contenido inicio -->
 
 <section> 
  
@@ -111,8 +120,10 @@
 
 
 
+<!-- contenido fin	 -->
 
-
+<!-- layout inferior -->
+	<jsp:include page="Navigate/inferior.jsp"></jsp:include>
 
 </body>
 </html>

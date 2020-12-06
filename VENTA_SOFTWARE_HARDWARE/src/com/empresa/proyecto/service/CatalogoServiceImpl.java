@@ -15,7 +15,6 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		List<Catalogo> marca = null;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
 		try{
-			System.out.println("------Listando Marcas------");
 			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
 			marca = cm.lstMarca();
 		} catch (Exception e){
@@ -45,12 +44,12 @@ public class CatalogoServiceImpl implements ICatalogoService{
 	}
 
 	@Override
-	public int eliminarMarca(int cod_subCatalogo) {
+	public int eliminarMarca(Catalogo x) {
 		int ok=0;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
 		try{
-			CatalogoServiceImpl cm = session.getMapper(CatalogoServiceImpl.class);
-			ok = cm.eliminarMarca(cod_subCatalogo);
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			ok = cm.eliminarMarca(x);
 			session.commit();
 		} catch(Exception e){
 			System.out.println(""+e.toString());
@@ -78,6 +77,37 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		}
 		
 		return ok;
+	}
+
+	@Override
+	public List<Catalogo> lstTeclado() {
+		List<Catalogo> teclado = null;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		try{
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			teclado = cm.lstTeclado();
+		} catch (Exception e){
+			return null;
+		}
+		return teclado;
+	}
+
+	@Override
+	public int insertarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int actualizarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int eliminarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	
