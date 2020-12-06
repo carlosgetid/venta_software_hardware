@@ -1,4 +1,4 @@
-DROP DATABASE `bd_venta_software_hardware` ;
+DROP DATABASE IF EXISTS`bd_venta_software_hardware` ;
 
 CREATE DATABASE `bd_venta_software_hardware` ;
 
@@ -323,10 +323,10 @@ insert into tb_trabajador values (null,'010200','3211448','adminNego','Pablo','S
 select * from tb_trabajador;
 
 INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','01','00','Adminnistrador del sistema',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','02','00','Adminnistrador del negocio',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','01','00','Adminnistrador del sistema',NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','02','00','Adminnistrador del negocio',NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','03','00','Encargado de Ventas',NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','04','00','Encargado de Almacen',NULL,NULL); 
 
 select * from tb_catalogo;
 
@@ -334,7 +334,14 @@ DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertMarca`(p_descrip varchar(500))
 BEGIN
 	declare subid varchar(20);
-    set subid = (select distinct(concat('0',count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01');
+    declare relleno varchar(5);
+    if (select distinct(count(id_subCatalogo)) from tb_catalogo where id_Catalogo='01')<=9 then
+		set relleno = '0';
+	else
+		set relleno = '';
+	end if;
+    
+    set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01' and id_subCatalogo!="00");
 		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, null);
 END
 //

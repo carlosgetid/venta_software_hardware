@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
 	    	   descripcion as descrip_catalogo
 		from tb_catalogo 
-		where id_Catalogo='01' and id_subCatalogo!="00" order by 2
+		where id_Catalogo='01' and id_subCatalogo!="00" order by 1
 	</select>
 	<delete id="eliminarMarca" parameterType="int">
 		delete from tb_catalogo where id_subCatalogo=#{cod_subCatalogo} and id_catalogo='01'
