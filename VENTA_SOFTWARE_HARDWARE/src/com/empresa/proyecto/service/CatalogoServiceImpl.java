@@ -15,7 +15,6 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		List<Catalogo> marca = null;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
 		try{
-			System.out.println("------Listando Marcas------");
 			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
 			marca = cm.lstMarca();
 		} catch (Exception e){
