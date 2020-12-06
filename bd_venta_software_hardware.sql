@@ -1,4 +1,4 @@
-DROP DATABASE `bd_venta_software_hardware` ;
+DROP DATABASE IF EXISTS`bd_venta_software_hardware` ;
 
 CREATE DATABASE `bd_venta_software_hardware` ;
 
@@ -9,11 +9,12 @@ use bd_venta_software_hardware;
 
 CREATE TABLE `bd_venta_software_hardware`.`tb_catalogo`(
 	`id_Catalogo` VARCHAR(2) NOT NULL,
-    `id_subCatalogo` VARCHAR(2) NOT NULL,
+    `id_subCatalogo` VARCHAR(20) NOT NULL,
     `id_Tabla` VARCHAR(2) NOT NULL,
-    `descripcion` varchar(500),
+    `descripcion` varchar(500) NOT NULL,
     `valor1` varchar(500),
-    `valor2` int,
+    `estado` int,
+    `precio` decimal(5,2),
     primary key(`id_Catalogo`,`id_subCatalogo`,`id_Tabla`)
 );
 
@@ -222,15 +223,12 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
   );  
   
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
- 
+
  #CREATE TABLE `bd_venta_software_hardware`.`tb_rol` (
  # `cod_rol` INT NOT NULL AUTO_INCREMENT,
  # `descrip_rol` VARCHAR(45)  NOT NULL,
  # PRIMARY KEY (`cod_rol`));
- -------------------------------------------------------------------
 
- -------------------------------------------------------------------
  
  
  #CREATE TABLE `bd_venta_software_hardware`.`tb_marca` (
@@ -238,14 +236,7 @@ CREATE TABLE `bd_venta_software_hardware`.`tb_det_caracteristica` (
 #  `descrip_marca` VARCHAR(45) NOT NULL,
 #  PRIMARY KEY (`cod_marca`));
   
---------------------------------------------------------------------------
-#INSERT INTO tb_marca values (null,'LG');
-INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null),
-							   ('01','01','00','DELL',null,null),
-							   ('01','02','00','LENOVO',null,null),
-                               ('01','03','00','HP',null,null),
-                               ('01','04','00','ACER',null,null);
-------------------------------------------------------------------------
+
  
 
 
@@ -255,11 +246,7 @@ INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null),
 #  `descrip_cat` VARCHAR(200) NOT NULL,
 #  PRIMARY KEY (`cod_cat`));
   
-----------------------------------------------------------------------------
-#insert into tb_categoria values(null,'PC','Informatica');
-INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null);
-----------------------------------------------------------------------------
- 
+
  
 #CREATE TABLE `bd_venta_software_hardware`.`tb_caracteristica` (
 #  `cod_caract` INT NOT NULL AUTO_INCREMENT,
@@ -267,11 +254,6 @@ INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null);
 #  PRIMARY KEY (`cod_caract`),
 #  FOREIGN KEY (`cod_det_caract`) REFERENCES tb_det_caracteristica(`cod_det_caract`));
 
------------------------------------------------------------
-#insert into tb_caracteristica values (null,'1');
--------------------------------------------------------------
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DELIMITER //
 CREATE FUNCTION  fn_catalogo(codigo varchar(6)) 
@@ -304,28 +286,80 @@ DELIMITER ;
 
 
 /*-------------------------------------------------------------------------------------------------------------------*/
-INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null);
-INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null);
-INSERT INTO tb_catalogo values ('04','00','00','--SO--',null,null);
-INSERT INTO tb_catalogo values ('04','01','00','Windows',null,null);
-INSERT INTO tb_catalogo values ('05','00','00','--Resolucion Pantalla--',null,null);
-INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null);
 
 /*
 insert into tb_det_caracteristica values (null,'030100','040100','2 gb','8 gb','Negro','540 gr','Dual','050100');
 */
------------------------------------------------------------------------------------------------------------------
+
+
+
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertMarca`(p_descrip varchar(500))
+BEGIN
+	declare subid varchar(20);
+    declare relleno varchar(5);
+    if (select distinct(count(id_subCatalogo)) from tb_catalogo where id_Catalogo='01')<=9 then
+		set relleno = '0';
+	else
+		set relleno = '';
+	end if;
+    
+    set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01' and id_subCatalogo!="00");
+		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1);
+END
+//
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2), p_descrip varchar(500))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `descripcion`=p_descrip WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_deleteMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `estado`='0' WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;
+
+
 
 
 insert into tb_trabajador values (null,'010100','4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
 insert into tb_trabajador values (null,'010200','3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
 
-select * from tb_trabajador;
 
-INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','01','00','Adminnistrador del sistema',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','02','00','Adminnistrador del negocio',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','03','00','Encargado de Ventas',NULL,NULL); 
-INSERT INTO tb_catalogo values ('01','04','00','Encargado de Almacen',NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','00','00','--ROLES--',NULL,NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','01','00','Adminnistrador del sistema',NULL,NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','02','00','Adminnistrador del negocio',NULL,NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','03','00','Encargado de Ventas',NULL,NULL,NULL); 
+INSERT INTO tb_catalogo values ('00','04','00','Encargado de Almacen',NULL,NULL,NULL); 
 
-select * from tb_catalogo;
+INSERT INTO tb_catalogo values ('01','00','00','--MARCAS--',null,null,NULL);
+INSERT INTO tb_catalogo values ('01','01','00','DELL',null,1,NULL);
+INSERT INTO tb_catalogo values ('01','02','00','LENOVO',null,1,NULL);
+INSERT INTO tb_catalogo values ('01','03','00','HP',null,1,NULL);
+INSERT INTO tb_catalogo values ('01','04','00','ACER',null,1,NULL);
+
+INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null,NULL);
+
+INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null,NULL);
+INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null,NULL);
+
+INSERT INTO tb_catalogo values ('04','00','00','--SO--',null,null,NULL);
+INSERT INTO tb_catalogo values ('04','01','00','Windows',null,null,NULL);
+
+INSERT INTO tb_catalogo values ('05','00','00','--Resolucion Pantalla--',null,null,NULL);
+INSERT INTO tb_catalogo values ('05','01','00','1920 x 1080',null,null,NULL);
+
+INSERT INTO tb_catalogo values ('06','00','00','--TECLADOS--',null,null,NULL);
+INSERT INTO tb_catalogo values ('06','01','00','MICROSOFT TECLADO ALL IN ONE MEDIA',null,1, 169.00);
+INSERT INTO tb_catalogo values ('06','02','00','TECLADO LOGITECH K120',null,1, 35.00);
+INSERT INTO tb_catalogo values ('06','03','00','ARTECK TECLADO INALÁMBRICO',null,1, 213.00);

@@ -8,6 +8,7 @@ public class Catalogo {
 	private String descrip_catalogo;
 	private String valor1;
 	private int valor2;
+	private double precio;
 	
 	
 	
@@ -46,6 +47,12 @@ public class Catalogo {
 	}
 	public void setValor2(int valor2) {
 		this.valor2 = valor2;
+	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
 	}
 	
 	

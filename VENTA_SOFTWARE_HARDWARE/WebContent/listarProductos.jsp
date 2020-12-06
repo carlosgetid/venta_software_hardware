@@ -17,7 +17,7 @@
 <jsp:include page="Navigate/styleLayout.jsp"></jsp:include>
 
 <meta charset="UTF-8">
-<title>Listado de marcas</title>
+<title>Listado de productos</title>
  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -42,17 +42,20 @@
             <div class="col-lg-12">      
           		<br/>
           		
-				<h1>Mantenimiento de Marcas</h1>
+				<h1>Mantenimiento de Productos</h1>
 				
 				<br/>
 			
-            	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
+            	<a id="botonListar" class="btn btn-primary" href="listarTeclados">Listar</a>
 			 	<br/>
-			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
+			 	<s:form id="idForm" action="registrarTeclado" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Producto">
 					<s:hidden id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
 					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
+					
+					<label id="idMantLabelMarca">Precio</label>
+					<s:textfield id="idtxtMarca" name="precio" />
 				<br/>
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
 				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
@@ -67,13 +70,15 @@
 					<tr>
 						<th>Id</th>
 						<th>Descripcion</th>
+						<th>Precio</th>
 					</tr>
 					
 			
-						<s:iterator value="marcas">
+						<s:iterator value="teclados">
 							<tr class="delbtn">
 								<td><s:property value="cod_catalogo"/> </td>
 								<td><s:property value="descrip_catalogo" /></td>
+								<td><s:property value="precio" /></td>
 							</tr>
 						</s:iterator>
 				</table>
