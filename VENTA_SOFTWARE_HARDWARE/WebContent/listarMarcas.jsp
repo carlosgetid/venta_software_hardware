@@ -67,9 +67,9 @@
 					
 			
 						<s:iterator value="marcas">
-							<tr  >
+							<tr class="delbtn">
 								<td><s:property value="cod_catalogo"/> </td>
-								<td class="delbtn"><s:property value="descrip_catalogo" /></td>
+								<td><s:property value="descrip_catalogo" /></td>
 							</tr>
 						</s:iterator>
 				</table>
@@ -105,13 +105,15 @@ jQuery('.delbtn').on('click', function() {
     var $columns = $row.find('td');
 
     $columns.addClass('row-highlight');
+    var arr = new Array();
     var values = "";
 
     jQuery.each($columns, function(i, item) {
-        values = values + 'td' + (i + 1) + ':' + item.innerHTML + '<br/>';
-        alert(values);
+    	arr.push(item.innerHTML);
+    	console.log(arr[i]);
     });
-    console.log(values);
+    $("#idSeleccion").val(arr[0]);    
+    $("#idtxtMarca").val(arr[1]);
 });
 
 </script>
