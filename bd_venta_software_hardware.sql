@@ -346,3 +346,13 @@ BEGIN
 END
 //
 DELIMITER ;
+
+describe tb_catalogo;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateMarca`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2), p_descrip varchar(500))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `descripcion`=p_descrip WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;

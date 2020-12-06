@@ -28,16 +28,12 @@ public class CatalogoServiceImpl implements ICatalogoService{
 	public int insertarMarca(Catalogo marca) {
 		int ok = 0;
 		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
-		System.out.println("-------REGISTRAR MARCA 5--------");
 
 		try{
-			System.out.println("-------REGISTRAR MARCA 6--------");
 
 			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
-			System.out.println("-------REGISTRAR MARCA 7--------");
 
 			ok = cm.insertarMarca(marca);
-			System.out.println("-------REGISTRAR MARCA 8--------");
 			session.commit();
 		} catch(Exception e){
 			System.out.println(""+e.toString());
@@ -61,6 +57,26 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		} finally {
 			session.close();
 		}
+		return ok;
+	}
+
+	@Override
+	public int actualizarMarca(Catalogo x) {
+		int ok = 0;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+
+		try{
+
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+
+			ok = cm.actualizarMarca(x);
+			session.commit();
+		} catch(Exception e){
+			System.out.println(""+e.toString());
+		} finally{
+			session.close();
+		}
+		
 		return ok;
 	}
 	

@@ -8,6 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertarMarca" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
 		call sp_insertMarca(#{descrip_catalogo});
 	</insert>
+	<update id="actualizarMarca" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+		call sp_updateMarca(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla},#{descrip_catalogo});
+	</update>
 	<select id="lstMarca" resultType="com.empresa.proyecto.bean.Catalogo">
 		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
 	    	   descripcion as descrip_catalogo
@@ -17,12 +20,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="eliminarMarca" parameterType="int">
 		delete from tb_catalogo where id_subCatalogo=#{cod_subCatalogo} and id_catalogo='01'
 	</delete>
-	<update id="actualizarMarca" parameterType="com.empresa.proyecto.bean.Catalogo">
-		update tb_catalogo 
-		set descripcion = #{descrip_catalogo}
-		where id_catalogo='01' and 
-			  id_subCatalogo=#{cod_subcatalogo}
-	</update>
 	
 	
 </mapper>

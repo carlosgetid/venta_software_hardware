@@ -32,13 +32,13 @@
             	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
 			 	<br/>
 			 	<s:form action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
-					<s:hidden id="idSeleccion" name="idSeleccion" />
+					<s:textfield id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
 					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
 			
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
-				<s:submit cssClass="btn btn-success" value="Actualizar"/>
+				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
 				</s:form>
 
 		
@@ -112,7 +112,7 @@ jQuery('.delbtn').on('click', function() {
     	arr.push(item.innerHTML);
     	console.log(arr[i]);
     });
-    $("#idSeleccion").val(arr[0]);    
+    $("#idMarca").val(arr[0]);    
     $("#idtxtMarca").val(arr[1]);
 });
 
