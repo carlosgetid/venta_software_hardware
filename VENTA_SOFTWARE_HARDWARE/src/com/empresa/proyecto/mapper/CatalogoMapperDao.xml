@@ -15,13 +15,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
 	    	   descripcion as descrip_catalogo
 		from tb_catalogo 
-		where id_Catalogo='01' and id_subCatalogo!="00" 
-        and valor2=1
+		where id_Catalogo='01' and id_subCatalogo!='00' 
+        and estado=1
         order by 1
 	</select>
 	<update id="eliminarMarca" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
 		call sp_deleteMarca(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla});
 	</update>
 	
+	<!-- CRUD de Teclados -->
+	<select id="lstTeclado" resultType="com.empresa.proyecto.bean.Catalogo">
+		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
+	    	   descripcion as descrip_catalogo,
+               precio as precio
+		from tb_catalogo 
+		where id_Catalogo='06' and id_subCatalogo!='00'
+        and estado=1
+        order by 1
+	</select>
 	
 </mapper>

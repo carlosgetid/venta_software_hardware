@@ -46,13 +46,16 @@
 				
 				<br/>
 			
-            	<a id="botonListar" class="btn btn-primary" href="listaMarcas">Listar</a>
+            	<a id="botonListar" class="btn btn-primary" href="listarTeclados">Listar</a>
 			 	<br/>
-			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Marca">
+			 	<s:form id="idForm" action="registrarMarca" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Producto">
 					<s:hidden id="idMarca" name="idMarca" />
 
 					<label id="idMantLabelMarca">Descripcion</label>
 					<s:textfield id="idtxtMarca" name="descrip_catalogo" />
+					
+					<label id="idMantLabelMarca">Precio</label>
+					<s:textfield id="idtxtMarca" name="precio" />
 				<br/>
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
 				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
@@ -67,13 +70,15 @@
 					<tr>
 						<th>Id</th>
 						<th>Descripcion</th>
+						<th>Precio</th>
 					</tr>
 					
 			
-						<s:iterator value="marcas">
+						<s:iterator value="teclados">
 							<tr class="delbtn">
 								<td><s:property value="cod_catalogo"/> </td>
 								<td><s:property value="descrip_catalogo" /></td>
+								<td><s:property value="precio" /></td>
 							</tr>
 						</s:iterator>
 				</table>

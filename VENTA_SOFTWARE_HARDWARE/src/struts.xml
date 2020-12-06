@@ -39,6 +39,14 @@
 	</action>
 
 
+<!-- 	CRUD de teclados -->
+	<action name="listarTeclados" class="com.empresa.proyecto.action.CatalogoAction" method="listarTeclados">
+		<result name="listarTeclados">/listarProductos.jsp</result>
+		<result name="error">/listarProductos.jsp</result>
+	</action>
+
+
+
 	</package>
 
 </struts>

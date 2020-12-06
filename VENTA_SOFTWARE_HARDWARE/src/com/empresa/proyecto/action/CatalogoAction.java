@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CatalogoAction extends ActionSupport {
 	private Catalogo catalogo;
 	private List<Catalogo> marcas;
+	private List<Catalogo> teclados;
 	private String idMarca;
 	private String descrip_catalogo;
 	
@@ -89,6 +90,18 @@ public class CatalogoAction extends ActionSupport {
 		}
 		
 	}
+	
+	public String listarTeclados(){
+		CatalogoServiceImpl service = new CatalogoServiceImpl();
+		teclados = service.lstTeclado();
+		if(teclados == null){
+			addActionError("Error al listar.");
+			return "error";
+		} else {
+			return "listarTeclados";
+		}
+		
+	}
 
 	public Catalogo getCatalogo() {
 		return catalogo;
@@ -104,6 +117,14 @@ public class CatalogoAction extends ActionSupport {
 
 	public void setMarcas(List<Catalogo> marcas) {
 		this.marcas = marcas;
+	}
+
+	public List<Catalogo> getTeclados() {
+		return teclados;
+	}
+
+	public void setTeclados(List<Catalogo> teclados) {
+		this.teclados = teclados;
 	}
 
 	public String getIdMarca() {
@@ -122,9 +143,5 @@ public class CatalogoAction extends ActionSupport {
 		this.descrip_catalogo = descrip_catalogo;
 	}
 
-	
-	
-	
-	
 	
 }

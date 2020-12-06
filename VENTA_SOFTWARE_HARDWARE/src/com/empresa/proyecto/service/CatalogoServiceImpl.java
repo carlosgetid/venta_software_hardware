@@ -78,6 +78,37 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		
 		return ok;
 	}
+
+	@Override
+	public List<Catalogo> lstTeclado() {
+		List<Catalogo> teclado = null;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		try{
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			teclado = cm.lstTeclado();
+		} catch (Exception e){
+			return null;
+		}
+		return teclado;
+	}
+
+	@Override
+	public int insertarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int actualizarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int eliminarTeclado(Catalogo x) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 }
