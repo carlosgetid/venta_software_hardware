@@ -306,11 +306,10 @@ BEGIN
 	end if;
     
     set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='01' and id_subCatalogo!="00");
-		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1);
+		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1, null);
 END
 //
 DELIMITER ;
-
 
 
 DELIMITER //
@@ -330,7 +329,88 @@ END
 DELIMITER ;
 
 
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertCategoria`(p_descrip varchar(500))
+BEGIN
+	declare subid varchar(20);
+    declare relleno varchar(5);
+    if (select distinct(count(id_subCatalogo)) from tb_catalogo where id_Catalogo='01')<=9 then
+		set relleno = '0';
+	else
+		set relleno = '';
+	end if;
+    
+    set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='02' and id_subCatalogo!="00");
+		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1, null);
+END
+//
+DELIMITER ;
 
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateCategoria`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2), p_descrip varchar(500))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `descripcion`=p_descrip WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_deleteCategoria`(p_id_catalago varchar(2), p_id_subcatalago varchar(2), p_id_tabla varchar(2))
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_catalogo` SET `estado`='0' WHERE `id_Catalogo`=p_id_catalago and`id_subCatalogo`=p_id_subcatalago and`id_Tabla`=p_id_tabla;
+END
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertProducto`(p_cod_marca varchar(6),
+																p_cod_categoria varchar(6),
+                                                                p_descip_producto varchar(200),
+                                                                p_cod_caracteristica int,
+                                                                p_precio_producto decimal(10,0),
+                                                                p_stock_minimo int,
+                                                                p_stock int)
+BEGIN
+	insert into tb_producto(cod_marca,cod_cat,descrip_prod,cod_caract,precio_prod,stk_prod,stk_min_prod,est_prod)
+					values (p_cod_marca,p_cod_categoria,p_descip_producto,p_cod_caracteristica,p_precio_producto,p_stock,p_stock_minimo,'1');
+END
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_updateProducto`(p_cod_producto int,
+																p_cod_marca varchar(6),
+																p_cod_categoria varchar(6),
+                                                                p_descip_producto varchar(200),
+                                                                p_cod_caracteristica int,
+                                                                p_precio_producto decimal(10,0),
+                                                                p_stock_minimo int,
+                                                                p_stock int)
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_producto` 
+    SET `cod_marca`=p_cod_marca,
+		`cod_cat`= p_cod_categoria,
+        `descrip_prod`= p_descip_producto,
+        `cod_caract`= p_cod_caracteristica,
+        `precio_prod`= p_precio_producto,
+        `stk_prod`= p_stock,
+        `stk_min_prod`= p_stock_minimo
+    WHERE `cod_prod`=p_cod_producto;
+END
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_deleteProducto`(p_cod_producto int)
+BEGIN
+	UPDATE `bd_venta_software_hardware`.`tb_producto` SET `est_prod`='0' WHERE `cod_prod`=p_cod_producto;
+END
+//
+DELIMITER ;
 
 insert into tb_trabajador values (null,'010100','4127845','adminSist','Carlos','Gomez','301475897','carlosgomez@gmail.com','974404978','av. brasil','T20201','123' );
 insert into tb_trabajador values (null,'010200','3211448','adminNego','Pablo','Saravia','47851045','pablosaravia@gmail.com','984221478','av. la paz','T20202','123' );
@@ -349,6 +429,15 @@ INSERT INTO tb_catalogo values ('01','03','00','HP',null,1,NULL);
 INSERT INTO tb_catalogo values ('01','04','00','ACER',null,1,NULL);
 
 INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','01','00','Laptop',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','02','00','Desktop',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','03','00','Teclados',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','04','00','Mouse',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','05','00','Software',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','06','00','Antivirus',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','07','00','Monitores',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','08','00','Impresoras',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','09','00','Audífonos',null,null,NULL);
 
 INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null,NULL);
 INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null,NULL);

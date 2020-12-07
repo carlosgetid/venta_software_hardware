@@ -9,8 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class CatalogoAction extends ActionSupport {
 	private Catalogo catalogo;
 	private List<Catalogo> marcas;
-	private List<Catalogo> teclados;
-	private String idMarca;
+	private List<Catalogo> categorias;
+	private String idMarca, idCategoria;
 	private String descrip_catalogo;
 	
 	public String registrarMarca(){
@@ -91,14 +91,80 @@ public class CatalogoAction extends ActionSupport {
 		
 	}
 	
-	public String listarTeclados(){
+	public String registrarCategoria(){
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
-		teclados = service.lstTeclado();
-		if(teclados == null){
+		catalogo = new Catalogo();
+		
+		if(idCategoria.equals("")) {
+			catalogo.setDescrip_catalogo(descrip_catalogo);
+			
+			int ok = service.insertarCatgoria(catalogo);
+			
+			if(ok==0){
+				addActionError("Error al registrar");
+				return "error";
+			} else{
+				addActionMessage("Registro exitoso!");
+				return "ok";
+			}
+		}
+		else {
+			catalogo.setCod_catalogo(idCategoria.substring(0, 2));
+			catalogo.setCod_subcatalogo(idCategoria.substring(2, 4));
+			catalogo.setCod_tabla(idCategoria.substring(4, 6));
+			
+			catalogo.setDescrip_catalogo(descrip_catalogo);
+			
+			int ok = service.actualizarCategoria(catalogo);
+			
+			if(ok==0){
+				addActionError("Error al registrar");
+				return "error";
+			} else{
+				addActionMessage("Actualizacion exitosa!");
+				return "ok";
+			}
+			
+		}
+		
+		
+	}
+	
+	public String listarCategoria(){
+		CatalogoServiceImpl service = new CatalogoServiceImpl();
+		categorias = service.lstMarca();
+		if(categorias == null){
 			addActionError("Error al listar.");
 			return "error";
 		} else {
-			return "listarTeclados";
+			return "listaCategorias";
+		}
+		
+	}
+	
+	public String eliminarCategoria(){
+		CatalogoServiceImpl service = new CatalogoServiceImpl();
+		catalogo = new Catalogo();
+		
+		if(idCategoria.equals("")) {
+			addActionError("Ningun elemento seleccionado");
+			return "error";
+		}
+		else {
+			catalogo.setCod_catalogo(idCategoria.substring(0, 2));
+			catalogo.setCod_subcatalogo(idCategoria.substring(2, 4));
+			catalogo.setCod_tabla(idCategoria.substring(4, 6));
+			
+			int ok = service.eliminarCategoria(catalogo);
+			
+			if(ok==0){
+				addActionError("Error al eliminar");
+				return "error";
+			} else{
+				addActionMessage("Eliminacion exitoso!");
+				return "ok";
+			}
+			
 		}
 		
 	}
@@ -120,11 +186,11 @@ public class CatalogoAction extends ActionSupport {
 	}
 
 	public List<Catalogo> getTeclados() {
-		return teclados;
+		return categorias;
 	}
 
-	public void setTeclados(List<Catalogo> teclados) {
-		this.teclados = teclados;
+	public void setTeclados(List<Catalogo> categorias) {
+		this.categorias = categorias;
 	}
 
 	public String getIdMarca() {

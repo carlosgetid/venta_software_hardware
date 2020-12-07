@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.empresa.proyecto.dao.IProductoDao">
+	<!-- CRUD de MARCA -->
+	<insert id="insertarProducto" parameterType="com.empresa.proyecto.bean.Producto" statementType="CALLABLE">
+		call sp_insertProducto(#{id_marca},
+							   #{id_cat},
+							   #{descrip_prod},
+							   #{id_caract},
+							   #{precio_prod},
+							   #{stk_min_prod},
+							   #{stk_prod});
+	</insert>
+	
+	<update id="actualizarProducto" parameterType="com.empresa.proyecto.bean.Producto" statementType="CALLABLE">
+		call sp_updateProducto(#{cod_prod},
+							   #{id_marca},
+							   #{id_cat},
+							   #{descrip_prod},
+							   #{id_caract},
+							   #{precio_prod},
+							   #{stk_min_prod},
+							   #{stk_prod});
+	</update>
+	
+	<select id="lstProducto" resultType="com.empresa.proyecto.bean.Producto">
+		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
+	    	   descripcion as descrip_catalogo
+		from tb_catalogo 
+		where id_Catalogo='01' and id_subCatalogo!='00' 
+        and estado=1
+        order by 1
+	</select>
+	
+	<update id="eliminarProducto" parameterType="com.empresa.proyecto.bean.Producto" statementType="CALLABLE">
+		call sp_deleteProducto(#{cod_prod});
+	</update>
+	
+	<!-- CRUD de Teclados -->
+	<!-- <select id="lstTeclado" resultType="com.empresa.proyecto.bean.Catalogo">
+		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
+	    	   descripcion as descrip_catalogo,
+               precio as precio
+		from tb_catalogo 
+		where id_Catalogo='06' and id_subCatalogo!='00'
+        and estado=1
+        order by 1
+	</select> -->
+	
+</mapper>

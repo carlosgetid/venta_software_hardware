@@ -17,7 +17,7 @@
 <jsp:include page="Navigate/styleLayout.jsp"></jsp:include>
 
 <meta charset="UTF-8">
-<title>Listado de productos</title>
+<title>Listado de categorias</title>
  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -29,8 +29,8 @@
 	
 <!-- 	contenido inicio -->
 	<script>
-	function eliminarProducto() {
-		$('#idForm').attr('action', 'eliminarProducto');
+	function eliminarCategoria() {
+		$('#idForm').attr('action', 'eliminarCategoria');
 	}
 	</script>
 	<section> 
@@ -42,56 +42,22 @@
             <div class="col-lg-12">      
           		<br/>
           		
-				<h1>Mantenimiento de Productos</h1>
+				<h1>Mantenimiento de Categorias</h1>
 				
 				<br/>
 			
-            	<a id="botonListar" class="btn btn-primary" href="listarProductos">Listar</a>
+            	<a id="botonListar" class="btn btn-primary" href="listaCategorias">Listar</a>
 			 	<br/>
-			 	<s:form id="idForm" action="registrarProducto" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Producto">
-					<s:hidden id="idMarca" name="cod_prod" />
-					
-					<s:url id="idMarca" action="listaMarcas"/>
-					<sj:select  label="Marca" 
-								name="catalogo.cod_catalogo"
-								href="%{idMarca}"
-								list="marcas"
-								listKey="cod_catalogo"
-								listValue="marca"
-								headerKey="-1"
-								headerValue="[Seleccione]"
-								/>								
-					<s:url id="idCategoria" action=""/>
-					<sj:select  label="Categoria" 
-								name="catalogo.cod_catalogo"
-								href="%{idCategoria}"
-								list="categorias"
-								listKey="cod_catalogo"
-								listValue="categoria"
-								headerKey="-1"
-								headerValue="[Seleccione]"
-								/>						
-					
-					<label id="idMantLabelMarca">Descripcion</label>
-					<s:textfield id="idtxtMarca" name="descrip_prod" />
-					
-					<label id="idMantLabelMarca">Características</label>
-					<s:textfield id="idtxtMarca" name="id_caract" />
-					
-					<label id="idMantLabelMarca">Precio</label>
-					<s:textfield id="idtxtMarca" name="precio_prod" />
-					
-					<label id="idMantLabelMarca">Stock</label>
-					<s:textfield id="idtxtMarca" name="stk_prod" />
-					
-					<label id="idMantLabelMarca">Stock mínimo</label>
-					<s:textfield id="idtxtMarca" name="stk_min_prod" />
+			 	<s:form id="idForm" action="registrarCategoria" enctype="multipart/form-data" theme="bootstrap" cssClass="form-horizontal" label="Detalle Categoria">
+					<s:hidden id="idCategoria" name="idCategoria" />
+
+					<label id="idMantLabelCategoria">Descripcion</label>
+					<s:textfield id="idtxtCategoria" name="descrip_catalogo" />
 				<br/>
-				
 				<s:submit cssClass="btn btn-success" value="Registrar"/>
 				<s:submit cssClass="btn btn-warning" value="Actualizar"/>
 				<sj:submit value="Eliminar" button="true" cssClass="btn btn-danger" formIds="idForm"
-				onclick="javascript:eliminarProducto();" />
+				onclick="javascript:eliminarCategoria();" />
 				</s:form>
 				
            		<br/>
@@ -100,26 +66,14 @@
 			
 					<tr>
 						<th>Id</th>
-						<th>Marca</th>
-						<th>Categoría</th>
 						<th>Descripcion</th>
-						<th>Características</th>
-						<th>Precio</th>
-						<th>Stock</th>
-						<th>Stock Mínimo</th>
 					</tr>
 					
 			
-						<s:iterator value="lstProducto">
+						<s:iterator value="Categorias">
 							<tr class="delbtn">
-								<td><s:property value="cod_prod"/> </td>
-								<td><s:property value="descripcion_marca" /></td>
-								<td><s:property value="descripcion_cat" /></td>
-								<td><s:property value="descrip_prod" /></td>
-								<td><s:property value="descripcion_caract" /></td>
-								<td><s:property value="precio_prod" /></td>
-								<td><s:property value="stk_prod" /></td>
-								<td><s:property value="stk_min_prod" /></td>
+								<td><s:property value="cod_catalogo"/> </td>
+								<td><s:property value="descrip_catalogo" /></td>
 							</tr>
 						</s:iterator>
 				</table>
@@ -162,8 +116,8 @@ jQuery('.delbtn').on('click', function() {
     	arr.push(item.innerHTML);
     	console.log(arr[i]);
     });
-    $("#idMarca").val(arr[0]);    
-    $("#idtxtMarca").val(arr[1]);
+    $("#idCategoria").val(arr[0]);    
+    $("#idtxtCategoria").val(arr[1]);
 });
 
 </script>

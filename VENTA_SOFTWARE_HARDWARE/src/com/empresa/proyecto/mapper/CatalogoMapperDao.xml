@@ -23,15 +23,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		call sp_deleteMarca(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla});
 	</update>
 	
-	<!-- CRUD de Teclados -->
-	<select id="lstTeclado" resultType="com.empresa.proyecto.bean.Catalogo">
+	<!-- CRUD de CATEGORIA -->
+	<insert id="insertarCategoria" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+		call sp_insertCategoria(#{descrip_catalogo});
+	</insert>
+	<update id="actualizarCategoria" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+		call sp_updateCategoria(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla},#{descrip_catalogo});
+	</update>
+	<select id="lstCategoria" resultType="com.empresa.proyecto.bean.Catalogo">
 		select concat(concat(id_Catalogo,id_subCatalogo),id_Tabla) as cod_catalogo,
-	    	   descripcion as descrip_catalogo,
-               precio as precio
+	    	   descripcion as descrip_catalogo
 		from tb_catalogo 
-		where id_Catalogo='06' and id_subCatalogo!='00'
+		where id_Catalogo='02' and id_subCatalogo!='00' 
         and estado=1
         order by 1
 	</select>
+	<update id="sp_deleteCategoria" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+		call sp_deleteMarca(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla});
+	</update>
 	
 </mapper>

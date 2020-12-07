@@ -8,7 +8,7 @@ public class Producto {
 	private String descripcion_marca;
 	//descripcion viene del tb_catalogo
 	
-	private int id_cat;
+	private String id_cat;
 	private String descripcion_cat;
 	
 	
@@ -48,10 +48,10 @@ public class Producto {
 	public void setDescripcion_marca(String descripcion_marca) {
 		this.descripcion_marca = descripcion_marca;
 	}
-	public int getId_cat() {
+	public String getId_cat() {
 		return id_cat;
 	}
-	public void setId_cat(int id_cat) {
+	public void setId_cat(String id_cat) {
 		this.id_cat = id_cat;
 	}
 	public String getDescripcion_cat() {

@@ -16,12 +16,12 @@
 			<result name="ok">/producto.jsp</result>
 	</action>
 
-	
-
  	<action name="lista" class="com.empresa.proyecto.action.TrabajadorAction" method="lista">
 			<result name="error">/producto.jsp</result>
 			<result name="ok">/producto.jsp</result>
 	</action>
+
+	<!-- ACTION CATALOGO -->
 
 	<action name="registrarMarca" class="com.empresa.proyecto.action.CatalogoAction" method="registrarMarca">
 		<result name="error">/listarMarcas.jsp</result>
@@ -38,6 +38,23 @@
 			<result name="ok">/listarMarcas.jsp</result>
 	</action>
 
+	<!-- ACTION CATALOGO -->
+
+	<action name="registrarCategoria" class="com.empresa.proyecto.action.CatalogoAction" method="registrarCategoria">
+		<result name="error">/listarMarcas.jsp</result>
+			<result name="ok">/listarMarcas.jsp</result>
+	</action>
+	
+	<action name="listaCategorias" class="com.empresa.proyecto.action.CatalogoAction" method="listarCategorias">
+			<result name="listaCategorias">/listarMarcas.jsp</result>
+		<result name="error">/listarMarcas.jsp</result>
+	</action>
+	
+	<action name="eliminarCategoria" class="com.empresa.proyecto.action.CatalogoAction" method="eliminarCategoria">
+		<result name="error">/listarMarcas.jsp</result>
+			<result name="ok">/listarMarcas.jsp</result>
+	</action>
+
 
 <!-- 	CRUD de teclados -->
 	<action name="listarTeclados" class="com.empresa.proyecto.action.CatalogoAction" method="listarTeclados">
@@ -45,6 +62,21 @@
 		<result name="error">/listarProductos.jsp</result>
 	</action>
 
+	<!-- ACTION PRODUCTO -->
+	<action name="listarProductos" class="com.empresa.proyecto.action.ProductoAction" method="listarProductos">
+		<result name="listaProducto">/registrarProducto.jsp</result>
+		<result name="error">/registrarProducto.jsp</result>
+	</action>
+
+	<action name="registrarProducto" class="com.empresa.proyecto.action.ProductoAction" method="registrarProducto">
+		<result name="listaProducto">/registrarProducto.jsp</result>
+		<result name="error">/registrarProducto.jsp</result>
+	</action>
+	
+	<action name="eliminarProducto" class="com.empresa.proyecto.action.ProductoAction" method="eliminarProducto">
+		<result name="ok">/registrarProducto.jsp</result>
+		<result name="error">/registrarProducto.jsp</result>
+	</action>
 
 
 	</package>
