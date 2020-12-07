@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.empresa.proyecto.dao.IUsuarioDao">
+
+
+
+	<select id="listaUsuario" resultType="com.empresa.proyecto.bean.Usuario">
+		SELECT 	  
+				  cod_usu as codigo_usu,
+				  nom_usu as nombre_usu,
+			      ape_usu as ape_usu,
+			      emai_usul as email_usu,
+			      tlf_usu as telf_usu,
+			      fec_nac as fec_nac_usu,
+			      dni_usu as dni_usu,
+			      est_usu as estado_usu
+			FROM tb_usuario
+
+	</select>
+
+
+	
+	<select id="obtenerUsuario" parameterType="int" resultType="com.empresa.proyecto.bean.Usuario">
+		SELECT 	   cod_usu as codigo_usu,
+			      est_usu as estado_usu
+			FROM tb_usuario
+		where cod_usu=#{codigo_usu}
+	</select>
+	
+	<update id="actualizarUsuario" parameterType="com.empresa.proyecto.bean.Usuario">
+		UPDATE tb_usuario
+		SET est_usu=#{estado_usu}
+		where cod_usu=#{codigo_usu}
+	</update>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<select id="consultaUsuarioxDNI" parameterType="String" resultType="com.empresa.proyecto.bean.Usuario">
+			SELECT 	  
+				  cod_usu as codigo_usu,
+				  nom_usu as nombre_usu,
+			      ape_usu as ape_usu,
+			      emai_usul as email_usu,
+			      tlf_usu as telf_usu,
+			      fec_nac as fec_nac_usu,
+			      dni_usu as dni_usu,
+			      est_usu as estado_usu
+			FROM tb_usuario
+ 	  	where dni_usu=#{dni}
+ 	 </select>
+	
+</mapper>

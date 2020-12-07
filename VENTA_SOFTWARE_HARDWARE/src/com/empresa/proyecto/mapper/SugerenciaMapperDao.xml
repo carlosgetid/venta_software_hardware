@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.empresa.proyecto.dao.ISugerenciaDao">
+
+
+
+	<select id="listaSugerencia" resultType="com.empresa.proyecto.bean.Sugerencia">
+		 SELECT 
+				s.cod_sug as cod_sug,
+			    s.descrip_sug as desc_sug,
+			    u.nom_usu as desc_usu,
+			    s.fec_sug as fec_sug
+		FROM tb_sugerencia s 
+		inner join tb_usuario u on s.cod_usu=u.cod_usu
+	</select>
+
+
+
+ 	
+</mapper>

@@ -79,6 +79,84 @@
 	</action>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- LISTA USUARIO -->
+		<action name="listaUsuario" class="com.empresa.proyecto.action.UsuarioAction" method="lista">
+			<result name="error">/usuario.jsp</result>
+			<result name="ok">/usuario.jsp</result>
+		</action>
+
+		<!-- CONSULTA USUARIO X DNI-->
+		<action name="consultaUsuario" class="com.empresa.proyecto.action.UsuarioAction" method="consultaUsuarioxDNI">
+			<result name="error">/Consulusuario.jsp</result>
+			<result name="ok">/Consulusuario.jsp</result>
+		</action>
+		
+		
+		<!-- ACTION BUSCAR -->		
+		 <action name="BuscarUsuario" class="com.empresa.proyecto.action.UsuarioAction" method="buscar">
+				<result name="error">/actUsuario.jsp</result>
+				<result name="ok">/actUsuario.jsp</result>
+		</action>
+		 
+		 <!-- ACTION ACTUALIZAR -->
+		 <action name="ActualizarUsuario" class="com.empresa.proyecto.action.UsuarioAction" method="actualizar">
+				<result name="error">/actUsuario.jsp</result>
+				<result name="ok">/actUsuario.jsp</result>
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- LISTA SUGERENCIA -->
+		<action name="listaSugerencia" class="com.empresa.proyecto.action.SugerenciaAction" method="lista">
+			<result name="error">/sugerencia.jsp</result>
+			<result name="ok">/sugerencia.jsp</result>
+		</action>
+		
+	
+
+
+
+
+
+
+
 	</package>
 
 </struts>

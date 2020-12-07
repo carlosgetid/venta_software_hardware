@@ -28,7 +28,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 		<mapper resource="com/empresa/proyecto/mapper/TrabajadorMapperDao.xml"/>
 		<mapper resource="com/empresa/proyecto/mapper/CatalogoMapperDao.xml"/>
-	
+		<mapper resource="com/empresa/proyecto/mapper/UsuarioMapperDao.xml"/>
+		<mapper resource="com/empresa/proyecto/mapper/SugerenciaMapperDao.xml"/>
 	</mappers>
 	
 
