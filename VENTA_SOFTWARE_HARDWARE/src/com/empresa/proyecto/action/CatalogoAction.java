@@ -98,7 +98,7 @@ public class CatalogoAction extends ActionSupport {
 		if(idCategoria.equals("")) {
 			catalogo.setDescrip_catalogo(descrip_catalogo);
 			
-			int ok = service.insertarCatgoria(catalogo);
+			int ok = service.insertarCategoria(catalogo);
 			
 			if(ok==0){
 				addActionError("Error al registrar");
@@ -185,11 +185,11 @@ public class CatalogoAction extends ActionSupport {
 		this.marcas = marcas;
 	}
 
-	public List<Catalogo> getTeclados() {
+	public List<Catalogo> getCategorias() {
 		return categorias;
 	}
 
-	public void setTeclados(List<Catalogo> categorias) {
+	public void setCategorias(List<Catalogo> categorias) {
 		this.categorias = categorias;
 	}
 
@@ -201,6 +201,14 @@ public class CatalogoAction extends ActionSupport {
 		this.idMarca = idMarca;
 	}
 
+	public String getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(String idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
 	public String getDescrip_catalogo() {
 		return descrip_catalogo;
 	}
@@ -209,5 +217,6 @@ public class CatalogoAction extends ActionSupport {
 		this.descrip_catalogo = descrip_catalogo;
 	}
 
+	
 	
 }

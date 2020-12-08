@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         and estado=1
         order by 1
 	</select>
-	<update id="sp_deleteCategoria" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
+	<update id="eliminarCategoria" parameterType="com.empresa.proyecto.bean.Catalogo" statementType="CALLABLE">
 		call sp_deleteMarca(#{cod_catalogo},#{cod_subcatalogo},#{cod_tabla});
 	</update>
 	

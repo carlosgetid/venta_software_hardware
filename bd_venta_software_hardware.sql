@@ -334,14 +334,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insertCategoria`(p_descrip varch
 BEGIN
 	declare subid varchar(20);
     declare relleno varchar(5);
-    if (select distinct(count(id_subCatalogo)) from tb_catalogo where id_Catalogo='01')<=9 then
+    if (select distinct(count(id_subCatalogo)) from tb_catalogo where id_Catalogo='02')<=9 then
 		set relleno = '0';
 	else
 		set relleno = '';
 	end if;
     
     set subid = (select distinct(concat(relleno,count(id_subCatalogo)+1)) from tb_catalogo where id_Catalogo='02' and id_subCatalogo!="00");
-		insert into tb_catalogo ()values ('01', subid,'00',p_descrip, null, 1, null);
+		insert into tb_catalogo ()values ('02', subid,'00',p_descrip, null, 1, null);
 END
 //
 DELIMITER ;
@@ -429,15 +429,15 @@ INSERT INTO tb_catalogo values ('01','03','00','HP',null,1,NULL);
 INSERT INTO tb_catalogo values ('01','04','00','ACER',null,1,NULL);
 
 INSERT INTO tb_catalogo values ('02','00','00','--CATEGORIAS--',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','01','00','Laptop',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','02','00','Desktop',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','03','00','Teclados',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','04','00','Mouse',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','05','00','Software',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','06','00','Antivirus',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','07','00','Monitores',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','08','00','Impresoras',null,null,NULL);
-INSERT INTO tb_catalogo values ('02','09','00','Audífonos',null,null,NULL);
+INSERT INTO tb_catalogo values ('02','01','00','Laptop',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','02','00','Desktop',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','03','00','Teclados',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','04','00','Mouse',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','05','00','Software',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','06','00','Antivirus',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','07','00','Monitores',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','08','00','Impresoras',null,1,NULL);
+INSERT INTO tb_catalogo values ('02','09','00','Audífonos',null,1,NULL);
 
 INSERT INTO tb_catalogo values ('03','00','00','--PROCESADORES--',null,null,NULL);
 INSERT INTO tb_catalogo values ('03','01','00','NVidia',null,null,NULL);

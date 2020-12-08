@@ -41,18 +41,18 @@
 	<!-- ACTION CATALOGO -->
 
 	<action name="registrarCategoria" class="com.empresa.proyecto.action.CatalogoAction" method="registrarCategoria">
-		<result name="error">/listarMarcas.jsp</result>
-			<result name="ok">/listarMarcas.jsp</result>
+		<result name="error">/listarCategorias.jsp</result>
+			<result name="ok">/listarCategorias.jsp</result>
 	</action>
 	
 	<action name="listaCategorias" class="com.empresa.proyecto.action.CatalogoAction" method="listarCategorias">
-			<result name="listaCategorias">/listarMarcas.jsp</result>
-		<result name="error">/listarMarcas.jsp</result>
+			<result name="listaCategorias">/listarCategorias.jsp</result>
+		<result name="error">/listarCategorias.jsp</result>
 	</action>
 	
 	<action name="eliminarCategoria" class="com.empresa.proyecto.action.CatalogoAction" method="eliminarCategoria">
-		<result name="error">/listarMarcas.jsp</result>
-			<result name="ok">/listarMarcas.jsp</result>
+		<result name="error">/listarCategorias.jsp</result>
+			<result name="ok">/listarCategorias.jsp</result>
 	</action>
 
 

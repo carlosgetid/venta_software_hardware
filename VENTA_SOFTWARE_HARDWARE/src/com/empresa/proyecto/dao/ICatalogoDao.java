@@ -14,4 +14,9 @@ public interface ICatalogoDao {
 	public int insertarTeclado(Catalogo x);
 	public int actualizarTeclado(Catalogo x);
 	public int eliminarTeclado(Catalogo x);
+	
+	public List<Catalogo> lstCategoria();
+	public int insertarCategoria(Catalogo x);
+	public int actualizarCategoria(Catalogo x);
+	public int eliminarCategoria(Catalogo x);
 }

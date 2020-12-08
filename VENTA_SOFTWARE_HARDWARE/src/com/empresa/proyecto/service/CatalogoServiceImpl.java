@@ -109,6 +109,75 @@ public class CatalogoServiceImpl implements ICatalogoService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<Catalogo> lstCategoria() {
+		List<Catalogo> categoria = null;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		try{
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			categoria = cm.lstCategoria();
+		} catch (Exception e){
+			return null;
+		}
+		return categoria;
+	}
+
+	@Override
+	public int insertarCategoria(Catalogo x) {
+		int ok = 0;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+
+		try{
+
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+
+			ok = cm.insertarCategoria(x);
+			session.commit();
+		} catch(Exception e){
+			System.out.println(""+e.toString());
+		} finally{
+			session.close();
+		}
+		
+		return ok;
+	}
+
+	@Override
+	public int actualizarCategoria(Catalogo x) {
+		int ok = 0;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+
+		try{
+
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+
+			ok = cm.actualizarCategoria(x);
+			session.commit();
+		} catch(Exception e){
+			System.out.println(""+e.toString());
+		} finally{
+			session.close();
+		}
+		
+		return ok;
+	}
+
+	@Override
+	public int eliminarCategoria(Catalogo x) {
+		int ok=0;
+		SqlSession session = MybatisUtil.getSqlSessionFactory().openSession();
+		try{
+			ICatalogoDao cm = session.getMapper(ICatalogoDao.class);
+			ok = cm.eliminarCategoria(x);
+			session.commit();
+		} catch(Exception e){
+			System.out.println(""+e.toString());
+		} finally {
+			session.close();
+		}
+		return ok;
+	}
 	
 	
 }
