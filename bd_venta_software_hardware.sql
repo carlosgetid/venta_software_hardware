@@ -452,3 +452,9 @@ INSERT INTO tb_catalogo values ('06','00','00','--TECLADOS--',null,null,NULL);
 INSERT INTO tb_catalogo values ('06','01','00','MICROSOFT TECLADO ALL IN ONE MEDIA',null,1, 169.00);
 INSERT INTO tb_catalogo values ('06','02','00','TECLADO LOGITECH K120',null,1, 35.00);
 INSERT INTO tb_catalogo values ('06','03','00','ARTECK TECLADO INALÁMBRICO',null,1, 213.00);
+
+INSERT INTO tb_usuario values (null, 'Pepe', 'Perez', 'pepeperez@gmail.com', 987654321, curdate(), 1, 87654321);
+INSERT INTO tb_usuario values (null, 'Ana', 'Flores', 'anaflores@gmail.com', 927553361, curdate(), 1, 57454724);
+INSERT INTO tb_usuario values (null, 'Pedro', 'Akira', 'pedroakira@gmail.com', 984624522, curdate(), 1, 83654221);
+INSERT INTO tb_usuario values (null, 'Luis', 'Salas', 'luissalas@gmail.com', 922553641, curdate(), 1, 77454324);
+
