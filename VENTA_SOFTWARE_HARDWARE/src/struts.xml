@@ -55,6 +55,10 @@
 			<result name="ok">/listarCategorias.jsp</result>
 	</action>
 
+	<action name="listaCategorias" class="com.empresa.proyecto.action.CatalogoAction" method="listarCategoria">
+			<result name="listaCategorias">/listarCategorias.jsp</result>
+		<result name="error">/listarCategorias.jsp</result>
+	</action>
 
 <!-- 	CRUD de teclados -->
 	<action name="listarTeclados" class="com.empresa.proyecto.action.CatalogoAction" method="listarTeclados">

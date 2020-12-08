@@ -132,7 +132,7 @@ public class CatalogoAction extends ActionSupport {
 	
 	public String listarCategoria(){
 		CatalogoServiceImpl service = new CatalogoServiceImpl();
-		categorias = service.lstMarca();
+		categorias = service.lstCategoria();
 		if(categorias == null){
 			addActionError("Error al listar.");
 			return "error";
